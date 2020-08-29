@@ -1,4 +1,9 @@
-import React from "react";
+
+import React, {Component} from "react";
+import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
+import { Link } from "react-router-dom";
+
+
 
 const styles = {
   card: {
@@ -18,33 +23,55 @@ const styles = {
 
 
 
-function Home() {
-  return (
-    <React.Fragment>
-      {/* <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-        <a className="navbar-brand" id="page-title" href="#">Same Page</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-
-            <li className="nav-item active">
-              <a className="nav-link username" href="#">Log In<span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item active">
-              <button className="btn btn-warning" type="button" id="sign-out">Sign Up</button>
-            </li>
-
-          </ul>
-
-        </div>
-      </nav> */}
 
 
+// const styles = {
+//   pageTitle: {
+//     fontFamily: 'Pacifico', 'cursive'
+// }
+// };
 
-      <div className="container">
+class Home extends Component {
+  state = {
+    visible: true,
+    modalIsOpen:false
+ 
+  }
+  toggleModal (){
+this.setState({
+  modalIsOpen: !this.state.modalIsOpen
+
+  });
+}
+toggleModalTwo(){
+  this.setState({
+    modalTwoIsOpen: !this.state.modalTwoIsOpen
+    
+  
+    });
+  }
+  render() {
+    return (
+      <React.Fragment>
+           <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a className="navbar-brand" id="pageTitle" href="#">Same Page</a>
+   
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav mr-auto">
+
+        <li className="nav-item active">
+        <a color= "primary" className="nav-link"  onClick={this.toggleModalTwo.bind(this)}>Login</a>
+        </li>
+        <li className="nav-item active">
+        <Button color= "primary" className="btn btn-warning" onClick={this.toggleModal.bind(this)}>Sign Up</Button>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+
+  <div className="container">
         <div className="w-100"></div>
         <div className="row">
           <div className="col-md-6">
@@ -125,10 +152,58 @@ function Home() {
       </div>
 
 
-    </React.Fragment>
+        <Modal isOpen={this.state.modalTwoIsOpen}>
+          <ModalHeader toggle={this.toggleModalTwo.bind(this)}>Please enter your Username and Password</ModalHeader>
+     
+         <ModalBody> 
+         <div className="form-group">
+          <Label for="postUsername" className="col-form-label">Username: </Label>
+          <Input type="text" id="postUsername"></Input>
+          </div>
+          <div className="form-group">
+          <Label for="postPassword" className="col-form-label">Password: </Label>
+          <Input type="password" id="postPassword"></Input>
+          </div>
+          </ModalBody> 
+          <ModalFooter>
+          <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
+          <Button color="primary" className="btn btn-warning">Sign in</Button>
+        </Link>
+            
+            <Button color="secondary" className="btn btn-dark" onClick={this.toggleModalTwo.bind(this)}>Cancel</Button>
+          </ModalFooter>
 
 
-  );
+        </Modal>
+
+    
+        
+        <Modal isOpen={this.state.modalIsOpen}>
+          <ModalHeader toggle={this.toggleModal.bind(this)}>Please create a Username and Password</ModalHeader>
+     
+         <ModalBody> 
+         <div className="form-group">
+          <Label for="postUsername" className="col-form-label">Username: </Label>
+          <Input type="text" id="postUsername"></Input>
+          </div>
+          <div className="form-group">
+          <Label for="postPassword" className="col-form-label">Password: </Label>
+          <Input type="password" id="postPassword"></Input>
+          </div>
+          </ModalBody> 
+          <ModalFooter>
+
+            <Button color="primary" className="btn btn-warning">Sign Up</Button>
+            <Button color="secondary" className="btn btn-dark" onClick={this.toggleModal.bind(this)}>Cancel</Button>
+          </ModalFooter>
+
+
+        </Modal>
+        </React.Fragment>
+    )
+  }
 }
+
+
 
 export default Home;
