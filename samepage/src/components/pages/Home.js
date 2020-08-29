@@ -21,7 +21,7 @@ const styles = {
 function Home() {
   return (
     <React.Fragment>
-      <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      {/* <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <a className="navbar-brand" id="page-title" href="#">Same Page</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@ function Home() {
           </ul>
 
         </div>
-      </nav>
+      </nav> */}
 
 
 
