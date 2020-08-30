@@ -18,7 +18,11 @@ const styles = {
   col: {
     paddingTop: ".5rem",
     paddingBottom: ".5rem"
-  }
+  },
+  a:{
+    fontFamily: "Pacifico"
+
+}
 };
 
 
@@ -54,7 +58,7 @@ toggleModalTwo(){
     return (
       <React.Fragment>
            <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a className="navbar-brand" id="pageTitle" href="#">Same Page</a>
+    <a className="navbar-brand" id="pageTitle" href="#"style={styles.a}>Same Page</a>
    
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">

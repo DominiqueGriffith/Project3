@@ -4,6 +4,7 @@ import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, L
 import Home from "./components/pages/Home";
 import Search from "./components/pages/search";
 import loggedIn from "./components/pages/loggedIn";
+import './fonts.css';
 // import logged from "./components/pages/loggedIn";
 
 function App() {

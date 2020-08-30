@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { Container, Col, Row } from "reactstrap";
+import { Container, Col, Row, Button } from "reactstrap";
 import ReactDom from "react-dom";
 
 
@@ -9,15 +9,39 @@ const styles = {
     border: "1px lightgray solid",
     borderRadius: "5px",
     maxWidth: "260px",
-    boxSizing: "border-box",
+    
     display: "block",
-    textAlign: "center",
+    
 
   },
   col: {
     paddingTop: ".5rem",
     paddingBottom: ".5rem"
-  }
+  },
+  a:{
+    fontFamily: "Pacifico"
+
+},
+img: {
+  height: "180px"
+},
+cardBoarder:{
+  border: "1px", 
+    borderRadius: "5px",
+    maxWidth: "260px",
+    minHeight: "320px",
+    boxSizing: "border-box",
+},
+div:{
+  display: "block"
+
+},
+
+formation: {
+  textAlign: "center",
+}
+
+
 };
 
 function LoggedIn() {
@@ -38,7 +62,7 @@ function LoggedIn() {
 
     event.preventDefault();
 
-    axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=20")
+    axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=8")
       .then(data => {
         console.log(data.data.items);
         setResult(data.data.items);
@@ -56,7 +80,7 @@ function LoggedIn() {
 
 
       <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-        <a className="navbar-brand" id="page-title" href="#">Same Page</a>
+        <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -83,7 +107,51 @@ function LoggedIn() {
 
 
 
-      <div className="container">
+     
+        <div className="w-100"></div>
+      
+         
+            <div id="top-week-one" >
+            
+            <Container>
+              <Row>
+              {result.map(book => (
+                 
+                 
+                  <div className="col-md-6 col-lg-4 col-xl-3 py-2">
+                    <div style= {styles.cardBoarder.div}className="card-border text-center">
+
+                   
+                <div style= {styles.col}> 
+                <div style = {styles.card}>
+                <a href={book.volumeInfo.previewLink}>  </a>
+                  <img style = {styles.img}className="img py-2"src={
+                    book.volumeInfo.imageLinks === undefined
+                      ? ""
+                      : `${book.volumeInfo.imageLinks.thumbnail}`
+                  } alt={book.title} />
+
+                  <h6 className="px-1" >{book.volumeInfo.title}</h6>
+                  <p style= {styles.formation} className="px-1">By {book.volumeInfo.authors}</p>
+                  <Button className="btn btn-primary">Add Book</Button>
+                
+                  <Button className="btn btn-primary">Bio</Button>
+                  {/* <p >BOOK BIO: {book.volumeInfo.description}</p> */}
+               
+                </div>
+                </div>
+                </div>
+                </div>
+               
+               
+              ))}
+              </Row>
+              </Container>
+              
+              {/* <div>IMAGE:</div> */}
+              {/* <img src="" alt="" class="img img-thumbnail"> </img> */}
+
+              <div className="container">
         <div className="w-100"></div>
         <div className="row">
           <div className="col-md-6">
@@ -104,37 +172,6 @@ function LoggedIn() {
 
 
         </div>
-        <div className="w-100"></div>
-        <div className="row">
-         
-            <div id="top-week-one" >
-
-              {result.map(book => (
-                 <Container>
-                   <Row>
-                     <Col>1 of 4</Col>
-                <div style= {styles.col}> 
-                <div style = {styles.card}>
-                <a href={book.volumeInfo.previewLink}>
-                  <img src={
-                    book.volumeInfo.imageLinks === undefined
-                      ? ""
-                      : `${book.volumeInfo.imageLinks.thumbnail}`
-                  } alt={book.title} />
-
-                  <p >BOOK TITLE: {book.volumeInfo.title}</p>
-                  <p >BOOK AUTHOR: {book.volumeInfo.authors}</p>
-                  {/* <p >BOOK BIO: {book.volumeInfo.description}</p> */}
-                </a>
-                </div>
-                </div>
-                
-                </Row>
-                </Container>
-               
-              ))}
-              {/* <div>IMAGE:</div> */}
-              {/* <img src="" alt="" class="img img-thumbnail"> </img> */}
 
               
              <p id="bookone-votes">CURRENT VOTES:</p>
@@ -144,7 +181,7 @@ function LoggedIn() {
 
 
           </div>
-        </div>
+      
 
 
 
