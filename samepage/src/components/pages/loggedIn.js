@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { Container, Col, Row, Button } from "reactstrap";
+import { Container, Col, Row, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from "reactstrap";
 import ReactDom from "react-dom";
 
 
@@ -9,15 +9,11 @@ const styles = {
     border: "1px lightgray solid",
     borderRadius: "5px",
     maxWidth: "260px",
-    
-    display: "block",
-    
+    minHeight: "320px",
+     
 
   },
-  col: {
-    paddingTop: ".5rem",
-    paddingBottom: ".5rem"
-  },
+
   a:{
     fontFamily: "Pacifico"
 
@@ -25,17 +21,7 @@ const styles = {
 img: {
   height: "180px"
 },
-cardBoarder:{
-  border: "1px", 
-    borderRadius: "5px",
-    maxWidth: "260px",
-    minHeight: "320px",
-    boxSizing: "border-box",
-},
-div:{
-  display: "block"
 
-},
 
 formation: {
   textAlign: "center",
@@ -119,29 +105,29 @@ function LoggedIn() {
                  
                  
                   <div className="col-md-6 col-lg-4 col-xl-3 py-2">
-                    <div style= {styles.cardBoarder.div}className="card-border text-center">
+                    <div style= {styles.card}className="card-border text-center">
 
                    
-                <div style= {styles.col}> 
-                <div style = {styles.card}>
+               
+                
                 <a href={book.volumeInfo.previewLink}>  </a>
-                  <img style = {styles.img}className="img py-2"src={
+                  <img style = {styles.img}src={
                     book.volumeInfo.imageLinks === undefined
                       ? ""
                       : `${book.volumeInfo.imageLinks.thumbnail}`
-                  } alt={book.title} />
+                  } alt={book.title} className= "img py-2" />
 
-                  <h6 className="px-1" >{book.volumeInfo.title}</h6>
-                  <p style= {styles.formation} className="px-1">By {book.volumeInfo.authors}</p>
-                  <Button className="btn btn-primary">Add Book</Button>
+                  <h6  >{book.volumeInfo.title}</h6>
+                  <p style= {styles.formation} >By {book.volumeInfo.authors}</p>
+                  <Button className="btn btn-primary mb-2">Add Book</Button>
                 
-                  <Button className="btn btn-primary">Bio</Button>
+                  <Button className="btn btn-primary mb-2">Bio</Button>
                   {/* <p >BOOK BIO: {book.volumeInfo.description}</p> */}
                
                 </div>
                 </div>
-                </div>
-                </div>
+               
+             
                
                
               ))}
