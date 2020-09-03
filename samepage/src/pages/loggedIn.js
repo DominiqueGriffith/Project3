@@ -1,9 +1,12 @@
 import React from "react";
 import axios from 'axios';
+import API from "../components/utils/API";
 import { Container, Col, Row, Button, Alert, ModalHeader, ModalBody, ModalFooter, Label, Input } from "reactstrap";
 import ReactDom from "react-dom";
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
+import AddBookBtn from '../components/AddBookBtn.js'
+import { Component } from "react";
 
 const styles = {
   card: {
@@ -31,7 +34,34 @@ const styles = {
 
 };
 
+class AddBook extends Component {
 
+  state = {
+    data: [],
+  }
+
+  componentDidMount() {
+
+    this.setState({ data: this.savedBooks(this.state.data) });
+    // API.savedBooks()
+    //     .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+    //     .catch(err => console.error(err));
+  }
+
+
+
+
+
+
+  // handleItemClick = id => {
+
+  //   const newData = this.state.data.map(item => {
+  //     const newItem = { ...item };
+
+  //     console.log(newData);
+  //   });
+  // };
+}
 
 function LoggedIn() {
 
@@ -58,9 +88,37 @@ function LoggedIn() {
       })
 
 
+    //   if (this.state.savedBooks.map(book => book._id).includes(book._id)) {
+    //     API.deleteBook(book._id)
+    //         .then(deletedBook => this.setState({ savedBooks: this.state.savedBooks.filter(book => book._id !== deletedBook._id) }))
+    //         .catch(err => console.error(err));
+    // } else {
+    // API.saveBook(book)
+    //     .then(savedBook => this.setState({ savedBooks: this.state.savedBooks.concat([savedBook]) }))
+    //     .catch(err => console.error(err));
+
+
+    // }
+
+
     //console.log(book);
 
   }
+
+
+  function handleItemClick(e) {
+ console.log();
+ console.log(e.target);
+
+    // const newData = result.map(item => {
+    //   const newItem = { ...item };
+
+    //   return(newItem);
+
+    // });
+    // console.log(newData)
+  };
+  // let component = this;
   return (
 
 
@@ -123,8 +181,10 @@ function LoggedIn() {
 
                   <h6  >{book.volumeInfo.title}</h6>
                   <p style={styles.formation} >By {book.volumeInfo.authors}</p>
-                  <Button className="btn btn-success mb-2">Add Book</Button>
-                  
+
+                  <AddBookBtn handleClick={handleItemClick} key={book} className="btn btn btn-warning"></AddBookBtn>
+
+                  {/* {this.state.savedBooks.map(book => book.volumeInfo).includes(book._id) ? "Unsave" : "Save"} */}
                   <a href={book.volumeInfo.previewLink}>
                     <Button className="btn btn-danger mb-2">Buy Book</Button>
                   </a>
@@ -140,7 +200,7 @@ function LoggedIn() {
                         <Card.Body>{book.volumeInfo.description}</Card.Body>
                       </Accordion.Collapse>
                     </Card>
-                    
+
                   </Accordion>
                 </div>
               </div>

@@ -3,17 +3,32 @@ import API from "../components/utils/API";
 import LoggedIn from "../pages/loggedIn"
 import { Container, Col, Row, Button } from "reactstrap";
 
-class AddBookBtn extends Component  {
+function AddBookBtn(props) {
+    return (
+        <button
 
-state = {
-    savedBooks: [],
+            onClick={props.handleClick}
+            data-key={props.key}    
+
+        >AddBook</button>
+
+
+    );
 }
 
-componentDidMount() {
-    API.savedBooks()
-        .then(savedBooks => this.setState({ savedBooks: savedBooks }))
-        .catch(err => console.error(err));
-}
+
+
+// class AddBookBtn extends Component  {
+
+// state = {
+//     savedBooks: [],
+// }
+
+// componentDidMount() {
+//     API.savedBooks()
+//         .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+//         .catch(err => console.error(err));
+// }
 
 // handleSave = book => {
 
@@ -25,19 +40,19 @@ componentDidMount() {
 //         API.saveBook(book)
 //             .then(savedBook => this.setState({ savedBooks: this.state.savedBooks.concat([savedBook]) }))
 //             .catch(err => console.error(err));
-            
+
 
 //     }
 // }
-render() {
-    return (
-        <button o className="btn badge-pill btn-outline-warning mt-3 ml-3" >
-    
-    </button>
-    )
+// render() {
+//     return (
+//         <button o className="btn badge-pill btn-outline-warning mt-3 ml-3" >
+
+//     </button>
+//     )
 
 
-    }
-}
+//     }
+// }
 
 export default AddBookBtn;
