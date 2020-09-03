@@ -107,7 +107,14 @@ function LoggedIn() {
 
 
   function handleItemClick(e) {
- console.log();
+
+    // const bookResults = result.map()
+
+    // console.log(bookResults)
+//     const btnType = event.target.attributes.getNamedItem("data-value").value;
+ 
+//  const newState = { ...this.state };
+//  console.log(newState);
  console.log(e.target);
 
     // const newData = result.map(item => {
@@ -182,7 +189,7 @@ function LoggedIn() {
                   <h6  >{book.volumeInfo.title}</h6>
                   <p style={styles.formation} >By {book.volumeInfo.authors}</p>
 
-                  <AddBookBtn handleClick={handleItemClick} key={book} className="btn btn btn-warning"></AddBookBtn>
+                  <AddBookBtn handleClick={handleItemClick} bookKey={book.id} ></AddBookBtn>
 
                   {/* {this.state.savedBooks.map(book => book.volumeInfo).includes(book._id) ? "Unsave" : "Save"} */}
                   <a href={book.volumeInfo.previewLink}>

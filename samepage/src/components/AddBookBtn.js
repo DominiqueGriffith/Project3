@@ -6,9 +6,10 @@ import { Container, Col, Row, Button } from "reactstrap";
 function AddBookBtn(props) {
     return (
         <button
-
+            className="btn btn btn-warning"
+            data-key={props.bookKey}
             onClick={props.handleClick}
-            data-key={props.key}    
+
 
         >AddBook</button>
 
