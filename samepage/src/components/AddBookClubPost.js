@@ -4,12 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 class AddBookClubPost extends Component {
-
-    state =
-    {
-        visible: true,
-        modalIsOpen: false    
-    }
     constructor(props) {
         super(props)
         this.state= {
@@ -36,54 +30,34 @@ class AddBookClubPost extends Component {
         //     console.log(error);
         // })
     }
-    toggleModalThree() {
-        this.setState({
-          modalThreeIsOpen: !this.state.modalThreeIsOpen
-    
-    
-        });
-      }
+   
     render() {
         const {title, body} = this.state
         return (
             <div>
 
-                <form onSubmit={this.submitHandler}>
-                    <div>
-                  <h6>What's your book club's name?</h6>  
-                        <input type="text" 
-                        name="title" 
-                        value = {title}
-                        onChange={this.changeHandler}/> 
-                    </div>
-                    <div>
-                   <h6>Describe your book club. What are you all about?</h6> 
-                        <textarea type="text" 
-                        name="body" 
-                        value = {body}
-                        onChange={this.changeHandler}/> 
-                    </div>
+            <form onSubmit={this.submitHandler}>
+                <div>
+              <h6>What's your book club's name?</h6>  
+                    <input type="text" 
+                    name="title" 
+                    value = {title}
+                    onChange={this.changeHandler}/> 
+                </div>
+                <div>
+               <h6>Describe your book club. What are you all about?</h6> 
+                    <textarea type="text" 
+                    name="body" 
+                    value = {body}
+                    onChange={this.changeHandler}/> 
+                </div>
 <br>
 </br>
 
-<Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Create</Button>
-                </form>
-                <Modal isOpen={this.state.modalThreeIsOpen}>
-          <ModalHeader toggle={this.toggleModalThree.bind(this)}>Logged In Successful</ModalHeader>
-
-          <ModalBody>
-            WELCOME BACK!
-          </ModalBody>
-          <ModalFooter>
-            <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
-              <Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Okay</Button>
-            </Link>
-
-          </ModalFooter>
-
-
-        </Modal>
+<Button color="primary"  className="btn btn-warning">Create</Button>
+            </form>
             </div>
+         
 
             
         )

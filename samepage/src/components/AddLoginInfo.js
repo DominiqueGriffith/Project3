@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap";
+import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class AddLogInInfo extends Component {
-
+    state =
+    {
+        visible: true,
+        modalIsOpen: false    
+    }
     constructor(props) {
         super(props)
         this.state= {
@@ -27,6 +32,13 @@ class AddLogInInfo extends Component {
         //     console.log(error);
         // })
     }
+    toggleModalThree() {
+        this.setState({
+          modalThreeIsOpen: !this.state.modalThreeIsOpen
+    
+    
+        });
+      }
     render() {
         const {username, password} = this.state
         return (
@@ -47,8 +59,27 @@ class AddLogInInfo extends Component {
 <br>
 </br>
 
-<Button color="primary" className="btn btn-warning">Create</Button>
+
+<Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Create</Button>
                 </form>
+                <br>
+</br>
+
+                <Modal isOpen={this.state.modalThreeIsOpen}>
+          <ModalHeader toggle={this.toggleModalThree.bind(this)}>Logged In Successful</ModalHeader>
+
+          <ModalBody>
+            WELCOME BACK!
+          </ModalBody>
+          <ModalFooter>
+            <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
+              <Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Okay</Button>
+            </Link>
+
+          </ModalFooter>
+
+
+        </Modal>
             </div>
         )
     }
