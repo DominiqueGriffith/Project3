@@ -7,6 +7,8 @@ import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import AddBookBtn from '../components/AddBookBtn.js'
 import { Component } from "react";
+import { Link } from "react-router-dom";
+
 
 const styles = {
   card: {
@@ -146,6 +148,11 @@ function LoggedIn() {
             </li>
             <li className="nav-item active">
               <button className="btn btn-warning" type="button" id="sign-out">Sign Out</button>
+            </li>
+            <li className="nav-item active">
+            <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"}>
+               <button className="btn btn-danger"onClick= "" type="button" id="sign-out">Bookclubs</button>
+               </Link>
             </li>
           </ul>
           <ul className="nav navbar-right">
