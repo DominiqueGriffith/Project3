@@ -4,6 +4,7 @@ import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, L
 import Home from "./pages/Home";
 import Search from "./pages/search";
 import loggedIn from "./pages/loggedIn";
+import bookclub from "./pages/bookclub";
 import './fonts.css';
 // import logged from "./components/pages/loggedIn";
 
@@ -16,9 +17,11 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/loggedIn" component={loggedIn} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="/bookclub" component={bookclub} />
+        
         {/* <Route exact path="/bookclub" component={} /> */}
        
-      </div>
+      </div> 
     </Router>
   );
 }
