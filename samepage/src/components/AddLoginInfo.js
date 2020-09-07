@@ -66,7 +66,7 @@ class AddLogInInfo extends Component {
           </br>
 
 
-          <Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Create</Button>
+          <Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Log in</Button>
         </form>
         <br>
         </br>
