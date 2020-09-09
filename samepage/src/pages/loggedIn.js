@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import API from "../utils/API";
+import API from "../utils/API.js";
 import { Container, Col, Row, Button, Alert, ModalHeader, ModalBody, ModalFooter, Label, Input } from "reactstrap";
 import ReactDom from "react-dom";
 import Accordion from 'react-bootstrap/Accordion'
@@ -110,6 +110,21 @@ function LoggedIn() {
 
   function handleItemClick(e) {
 
+    // event.preventDefault();
+
+    if (this.book.volumeInfo.title && this.book.volumeInfo.authors) {
+      API.saveBook({
+        bookName: this.book.volumeInfo.title,
+        authors: this.book.volumeInfo.authors,
+        bookID: this.book.id
+      })
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    }
+     console.log(e.target);
+     
+  };
+
     // const bookResults = result.map()
 
     // console.log(bookResults)
@@ -117,7 +132,7 @@ function LoggedIn() {
  
 //  const newState = { ...this.state };
 //  console.log(newState);
- console.log(e.target);
+
 
     // const newData = result.map(item => {
     //   const newItem = { ...item };
@@ -126,7 +141,7 @@ function LoggedIn() {
 
     // });
     // console.log(newData)
-  };
+ 
   // let component = this;
   return (
 

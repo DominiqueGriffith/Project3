@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 import AddLogInInfo from "../components/AddLoginInfo.js";
+import AddSignUp from "../components/addSignUp.js";
+
 
 
 
@@ -201,15 +203,8 @@ class Home extends Component {
           <ModalHeader toggle={this.toggleModal.bind(this)}>Please create a Username and Password</ModalHeader>
 
           <ModalBody>
-            <div className="form-group">
-              <Label for="postUsername" className="col-form-label">Username: </Label>
-              <Input type="text" id="postUsername"></Input>
-            </div>
-            <div className="form-group">
-              <Label for="postPassword" className="col-form-label">Password: </Label>
-              <Input type="password" id="postPassword"></Input>
-            </div>
-          </ModalBody>
+    <AddSignUp />
+    </ModalBody>
           <ModalFooter>
           <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
             <Button color="primary" className="btn btn-warning">Sign Up</Button>
