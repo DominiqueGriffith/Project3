@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import bookclubs from "../pages/bookclub";
 
 class AddBookClubPost extends Component {
+    state =
+    {
+      visible: true,
+      modalIsOpen: false
+    }
     constructor(props) {
         super(props)
         this.state= {
@@ -22,6 +28,7 @@ class AddBookClubPost extends Component {
     submitHandler = (e) => {
         e.preventDefault()
         console.log(this.state)
+        const createdBookclub = this.state
         // axios.post("https://samepage.com/bookclub/post", this.state)
         // .then (response => {
         //     console.log(response);
@@ -30,6 +37,22 @@ class AddBookClubPost extends Component {
         //     console.log(error);
         // })
     }
+    toggleModalFour() {
+        this.setState({
+          modalFourIsOpen: !this.state.ModalFourIsOpen
+    
+    
+        });
+      }
+      toggleModalThree() {
+        this.setState({
+          modalThreeIsOpen: !this.state.modalThreeIsOpen
+    
+    
+        });
+
+    }
+ 
    
     render() {
         const {title, body} = this.state
@@ -54,8 +77,10 @@ class AddBookClubPost extends Component {
 <br>
 </br>
 
-<Button color="primary"  className="btn btn-warning">Create</Button>
+<Button color="primary"   className="btn btn-warning">Create</Button>
             </form>
+
+       
             </div>
          
 

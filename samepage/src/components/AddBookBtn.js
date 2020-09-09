@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../components/utils/API";
+import API from "../utils/API";
 import LoggedIn from "../pages/loggedIn"
 import { Container, Col, Row, Button } from "reactstrap";
 

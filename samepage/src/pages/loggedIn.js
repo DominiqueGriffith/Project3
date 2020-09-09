@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import API from "../components/utils/API";
+import API from "../utils/API";
 import { Container, Col, Row, Button, Alert, ModalHeader, ModalBody, ModalFooter, Label, Input } from "reactstrap";
 import ReactDom from "react-dom";
 import Accordion from 'react-bootstrap/Accordion'

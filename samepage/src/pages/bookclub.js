@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import API from "../components/utils/API";
+import API from "../utils/API";
 import { Container, Col, Row, Button, Alert,Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from "reactstrap";
 import ReactDom from "react-dom";
 import Accordion from 'react-bootstrap/Accordion'
@@ -135,6 +135,24 @@ render () {
 
         </div>
         
+        <div className="w-100"></div>
+        <div className="row">
+        <div className="col-md-12">
+        {/* <AddBookClubPost> */}
+        {/* {createdBookclub.map( (bookclub) =>{
+        return(
+<h4 >{bookclub.title}</h4>
+)
+
+        })} */}
+          {/* </AddBookClubPost> */}
+
+    
+
+        </div>
+
+          </div>
+
         <div className="w-100"></div>
         <div className="row">
           <div className="col-md-4" style= {styles.col}>
