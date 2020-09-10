@@ -110,18 +110,28 @@ function LoggedIn() {
 
   function handleItemClick(e) {
 
+        axios.post("/api/books")
+        .then (response => {
+            console.log(response);
+        })
+        .catch (error => {
+            console.log(error);
+        })
+
     // event.preventDefault();
 
-    if (this.book.volumeInfo.title && this.book.volumeInfo.authors) {
-      API.saveBook({
-        bookName: this.book.volumeInfo.title,
-        authors: this.book.volumeInfo.authors,
-        bookID: this.book.id
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-     console.log(e.target);
+    // if (this.book.volumeInfo.title && this.book.volumeInfo.authors) {
+    //   API.saveBook({
+    //     bookName: this.book.volumeInfo.title,
+    //     authors: this.book.volumeInfo.authors,
+    //     bookID: this.book.id
+    //   })
+    //     .then(res => this.loadBooks())
+    //     .catch(err => console.log(err));
+    // }
+    console.log(e.target.getAttribute("data-key"));
+    // API.saveBook(e.target);
+
      
   };
 
@@ -211,7 +221,7 @@ function LoggedIn() {
                   <h6  >{book.volumeInfo.title}</h6>
                   <p style={styles.formation} >By {book.volumeInfo.authors}</p>
 
-                  <AddBookBtn handleClick={handleItemClick} bookKey={book.id} ></AddBookBtn>
+                  <AddBookBtn handleClick={handleItemClick} bookKey={book.id + book.volumeInfo.authors  + book.volumeInfo.title } ></AddBookBtn>
 
                   {/* {this.state.savedBooks.map(book => book.volumeInfo).includes(book._id) ? "Unsave" : "Save"} */}
                   <a href={book.volumeInfo.previewLink}>

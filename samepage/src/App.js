@@ -16,6 +16,7 @@ function App() {
       
         <Route exact path="/" component={Home} />
         <Route exact path="/loggedIn" component={loggedIn} />
+      
         <Route exact path="/search" component={Search} />
         <Route exact path="/bookclub" component={bookclub} />
         
