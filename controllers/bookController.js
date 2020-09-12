@@ -2,9 +2,6 @@
 var db = require("../models");
 
 // Routes
-
-
-
 module.exports = {
   findAll: function (req, res) {
     db.Book
@@ -20,10 +17,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
+    console.log(req.body)
     db.Book
-      .create(req.body)
+      .create(req.body.bookData)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      // .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
     db.Book

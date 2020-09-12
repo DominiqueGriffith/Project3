@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
 
-    bookName: { type: String, required: true },
-    bookID: { type: String, required: true },
-    authors: [{ type: String, required: true }],
+    bookName: { type: String  },
+    bookID: { type: String },
+    authors: [{ type: String }],
     comment: [{ type: String }],
     vote: [{ type: Number }],
 

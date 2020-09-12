@@ -38,18 +38,18 @@ const styles = {
 };
 
 class Search extends Component {
-  
+
   state = {
 
     currentSearch: "",
     books: [],
     // name: "",
     // value: "",
-    // title: ""
+    title: ""
   };
-  componentDidMount() {
-    this.searchBook();
-  }
+  // componentDidMount() {
+  //   this.searchBook("harry potter");
+  // }
 
 
 
@@ -63,10 +63,11 @@ class Search extends Component {
 
   handleChange = (event) => {
     // this.setState({currentSearch:event.target.value})
-   const name = event.target.name;
-        const value = event.target.value;
+    const name = event.target.name;
+    const value = event.target.value;
     // const setBook = React.useState("");
-
+    console.log(name);
+    console.log(value);
     this.setState({
       [name]: value
     });
@@ -74,27 +75,27 @@ class Search extends Component {
   };
   handleSubmit = (event) => {
 
-    // event.preventDefault();
+    event.preventDefault();
 
     this.searchBook()
 
 
   }
-searchBook = (query) => {
- 
-  API.getBook(this.state.currentSearch)
-  // console.log(query)
-  .then(data =>  {
-    console.log(data.data.items);
-    console.log("this is " + this.state.title)
+  searchBook = () => {
 
-    this.setState({books:data.data.items})
-    
-      // .map(bookData => this.renderBooks(bookData))});
+    API.getBook(this.state.title)
+      // console.log(query)
+      .then(data => {
+        console.log(data.data.items);
+        console.log("this is " + this.state.title)
 
-    // setResult(data.data.items)
-  })
-}
+        this.setState({ books: data.data.items })
+
+        // .map(bookData => this.renderBooks(bookData))});
+
+        // setResult(data.data.items)
+      })
+  }
 
 
   handleItemClick = (e) => {
@@ -106,7 +107,12 @@ searchBook = (query) => {
 
     console.log(e.target.getAttribute("data-key"));
     // API.saveBook(e.target.getAttribute("data-key"))
-    API.saveBook({ title: e.target.getAttribute("data-key") })
+    API.saveBook({
+      bookName:e.target.getAttribute("data-title"),
+      bookID: e.target.getAttribute("data-key"),
+      authors: e.target.getAttribute("data-author")
+
+   })
     // API.saveBook(e.target);
 
 
@@ -159,14 +165,14 @@ searchBook = (query) => {
             </ul>
             <ul className="nav navbar-right">
               <form id="searchbar"
-            currentSearch= {this.state.currentSearch}
-                onSubmit={this.handleSubmit} 
-               >
-                 
+                currentSearch={this.state.currentSearch}
+                onSubmit={this.handleSubmit}
+              >
+
                 <input id="booksearch"
                   value={this.state.title}
                   className="form-control mr-sm-2"
-                  
+
 
                   type="text"
                   onChange={this.handleChange}
@@ -212,7 +218,7 @@ searchBook = (query) => {
                     <h6  >{book.volumeInfo.title}</h6>
                     <p style={styles.formation} >By {book.volumeInfo.authors}</p>
 
-                    <AddBookBtn handleClick={this.handleItemClick} bookKey={book.id + book.volumeInfo.authors + book.volumeInfo.title} ></AddBookBtn>
+                    <AddBookBtn handleClick={this.handleItemClick} bookKey={book.id} bookTitle={book.volumeInfo.title} bookAuthor={book.volumeInfo.authors} ></AddBookBtn>
 
                     {/* {this.state.savedBooks.map(book => book.volumeInfo).includes(book._id) ? "Unsave" : "Save"} */}
                     <a href={book.volumeInfo.previewLink}>

@@ -8,6 +8,8 @@ function AddBookBtn(props) {
         <button
             className="btn btn btn-warning"
             data-key={props.bookKey}
+            data-title={props.bookTitle}
+            data-author={props.bookAuthor}
            
 
 
