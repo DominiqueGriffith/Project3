@@ -26,7 +26,11 @@ export default {
 
   // Get the saved a books from the database
   savedBooks: function () {
-    return axios.get("localhost/api/books").then(result => result.data);
+    console.log(JSON.stringify());
+    return axios.get("/api/books").then(result => result.data);
+
   }
+ 
+
 };
   // http://localhost:3000/

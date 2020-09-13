@@ -7,7 +7,11 @@ const bookSchema = new Schema({
     bookID: { type: String },
     authors: [{ type: String }],
     comment: [{ type: String }],
+    photoLink:[{type: String}],
+    previewLinks:[{type: String}],
+    bookDescriptions:[{type: String}],
     vote: [{ type: Number }],
+   
 
   
 });

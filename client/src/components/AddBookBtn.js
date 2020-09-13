@@ -10,6 +10,9 @@ function AddBookBtn(props) {
             data-key={props.bookKey}
             data-title={props.bookTitle}
             data-author={props.bookAuthor}
+            data-photo={props.bookPhoto}
+            data-plinks={props.bookPlinks}
+            data-bio={props.bookBio}
            
 
 
