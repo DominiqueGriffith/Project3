@@ -4,6 +4,7 @@ import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, L
 import { Link } from "react-router-dom";
 import AddLogInInfo from "../components/AddLoginInfo.js";
 import AddSignUp from "../components/addSignUp.js";
+import API from "../utils/API.js";
 
 
 
@@ -64,6 +65,19 @@ class Home extends Component {
 
     });
   }
+
+  handleClickPost =(e) => {
+    e.preventDefault();
+    console.log(e.target.getAttribute("data-user"));
+    console.log(e.target.getAttribute("data-password"));
+    API.signUp({
+      username: e.target.getAttribute("data-user"),
+      password: e.target.getAttribute("data-password"),
+
+     })
+  }
+
+
   render() {
     return (
       <React.Fragment>

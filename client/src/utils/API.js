@@ -29,6 +29,13 @@ export default {
     console.log(JSON.stringify());
     return axios.get("/api/books").then(result => result.data);
 
+  },
+
+  signUp: function ({username,
+    password}){
+    return axios.post("/api/signup",{username, password})
+    // .then(result => result.data);
+
   }
  
 

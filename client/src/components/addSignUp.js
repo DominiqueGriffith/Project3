@@ -32,6 +32,9 @@ class AddSignUpInfo extends Component {
     //     console.log(error);
     // })
   }
+  handleClickGet = () => {
+
+  }
   toggleModal() {
     this.setState({
       modalThreeIsOpen: !this.state.modalThreeIsOpen
