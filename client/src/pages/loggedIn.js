@@ -10,7 +10,7 @@ import AddBookBtn from '../components/AddBookBtn.js'
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import Likes from '../components/likeButton.js';
-import APIHooks from "../utils/APIhooks.js"
+
 
 
 const styles = {
@@ -43,7 +43,7 @@ class Search extends Component {
 
   state = {
 
-    currentSearch: "",
+    currentsearch: "",
     books: [],
     // name: "",
     // value: "",
@@ -73,7 +73,7 @@ class Search extends Component {
   // };
 
   handleChange = (event) => {
-    // this.setState({currentSearch:event.target.value})
+    // this.setState({currentsearch:event.target.value})
     const name = event.target.name;
     const value = event.target.value;
     // const setBook = React.useState("");
@@ -186,7 +186,7 @@ class Search extends Component {
             </ul>
             <ul className="nav navbar-right">
               <form id="searchbar"
-                currentSearch={this.state.currentSearch}
+                currentsearch={this.state.currentsearch}
                 onSubmit={this.handleSubmit}
               >
 
