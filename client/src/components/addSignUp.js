@@ -21,7 +21,7 @@ class AddSignUpInfo extends Component {
   //   }
   // }
 
-  changeHandlerUsername = (e) => {
+  changeHandler = (e) => {
     // console.log("This is e.target.value" + e.target.value)
    
     this.setState({ [e.target.name]: e.target.value })
@@ -31,20 +31,12 @@ class AddSignUpInfo extends Component {
     
   }
 
-  changeHandlerPassword = (e) => {
-    // console.log("This is e.target.value" + e.target.value)
-   
-    this.setState({ [e.target.name]: e.target.value })
 
-
-    
-    // console.log("This is password " + e.target.getAttribute("data-password"));
-  }
   submitHandler = (e) => {
     e.preventDefault()
 console.log("Hello WORLD!" + this.state.username)
 console.log("Hello WORLD!" + this.state.password)
-    API.signUp({
+    API.signUpUser({
       username: this.state.username,
       password: this.state.password
 
@@ -98,7 +90,7 @@ console.log("Hello WORLD!" + this.state.password)
                   Username <input type="text"
               name="username"
               value={username}
-              onChange={this.changeHandlerUsername} 
+              onChange={this.changeHandler} 
               data-username={username}/>
             <br>
             </br>
@@ -107,7 +99,7 @@ console.log("Hello WORLD!" + this.state.password)
                         Password <input type="password"
               name="password"
               value={password}
-              onChange={this.changeHandlerPassword}
+              onChange={this.changeHandler}
               data-password={password} />
           </div>
           <br>

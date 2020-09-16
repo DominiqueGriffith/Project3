@@ -31,10 +31,26 @@ export default {
 
   },
 
-  signUp: function (req) {
+  signUpUser: function (req) {
     console.log(req)
     // console.log("username " + username + "password " + password)
-    return axios.post("/api/signup", req).then(result => result.data);
+    return axios.post("/api/user", req).then(result => result.data);
+    // .then(result => result.data);
+
+  },
+
+  logInUser: function (req) {
+    console.log(req)
+    // console.log("username " + username + "password " + password)
+    return axios.post("/api/user", req).then(result => result.data);
+    // .then(result => result.data);
+
+  },
+
+  bookclub: function (req) {
+    console.log(req)
+    // console.log("username " + username + "password " + password)
+    return axios.post("/api/bookclub", req).then(result => result.data);
     // .then(result => result.data);
 
   }
