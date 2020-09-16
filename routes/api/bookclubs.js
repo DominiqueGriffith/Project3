@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const signupController = require("../../controllers/signupController.js");
+const bookclubController = require("../../controllers/bookclubController.js")
 
 router.route("/")
     // .get(signupController.findAll)
-    .post(signupController.create);
+    .post(bookclubController.create);
 
 module.exports = router;

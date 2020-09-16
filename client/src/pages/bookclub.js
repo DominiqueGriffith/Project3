@@ -163,6 +163,7 @@ render () {
               <h6 id="bookone-title">User bookclub:</h6>
               <h6 id="bookone-author">3 memeber</h6>
               <h6 id="bookone-votes">We are all about the classics</h6>
+              <Button>Open</Button>
 
 
 

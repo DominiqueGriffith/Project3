@@ -34,7 +34,7 @@ class AddBookClubPost extends Component {
         console.log("Hello WORLD!" + this.state.title)
         console.log("Hello WORLD!" + this.state.body)
 
-        API.bookclub({
+        API.saveBookclub({
             BookclubName: this.state.title,
             BookclubBio: this.state.body
 
