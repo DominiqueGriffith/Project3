@@ -30,6 +30,23 @@ export default {
     return axios.get("/api/books").then(result => result.data);
 
   },
+  getBookID: function(id) {
+    return axios.get("/api/books/" + id)
+ 
+  },
+  voteBook: function (id) {
+    console.log(id); 
+    return axios.put("/api/books/" + id )
+    // .then(result => result.data);
+
+  },
+
+
+  // deleteBook: function(id) {
+  //   return axios.delete("/api/books/" + id);
+  // },
+
+  
 
   signUpUser: function (signupData) {
    

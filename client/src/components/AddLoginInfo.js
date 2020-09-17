@@ -36,7 +36,10 @@ class AddLogInInfo extends Component {
       username: this.state.username,
       password: this.state.password
 
-     })
+     }).then(function (response) {
+      console.log(response);
+
+     });
     // axios.post("https://samepage.com/bookclub/post", this.state)
     // .then (response => {
     //     console.log(response);
