@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import APIHooks from "./APIhooks"
+
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q="
 const APIKEY = "&key=AIzaSyC5HzoMzNglXG_H1OUXl6DHyVlhOF9KFiI"
 
@@ -10,8 +10,8 @@ const APIKEY = "&key=AIzaSyC5HzoMzNglXG_H1OUXl6DHyVlhOF9KFiI"
 
 
 export default {
-  getBook: function (currentSearch) {
-    return axios.get(BASEURL + currentSearch + APIKEY + "&maxResults=8");
+  getBook: function (currentsearch) {
+    return axios.get(BASEURL + currentsearch + APIKEY + "&maxResults=8");
   },
   // Deletes the book with the given id
   deleteBook: function (id) {
@@ -19,18 +19,72 @@ export default {
   },
   // Saves a book to the database
   saveBook: function (bookData) {
-    console.log(bookData);
+    console.log(bookData); const bookdatas = JSON.stringify(bookData)
     return axios.post("/api/books", { bookData }).then(result => result.data);
 
   },
 
   // Get the saved a books from the database
   savedBooks: function () {
-    console.log(JSON.stringify());
+
     return axios.get("/api/books").then(result => result.data);
 
-  }
+  },
+  getBookID: function(id) {
+    return axios.get("/api/books/" + id)
  
+  },
+  voteBook: function (id) {
+    console.log(id); 
+    return axios.put("/api/books/" + id )
+    // .then(result => result.data);
+
+  },
+
+
+  // deleteBook: function(id) {
+  //   return axios.delete("/api/books/" + id);
+  // },
+
+  
+
+  signUpUser: function (signupData) {
+   
+    // console.log("username " + username + "password " + password)
+    return axios.post("/api/user", { signupData }).then(result => result.data);
+    // .then(result => result.data);
+
+  },
+
+  logInUser: function (loginData) {
+  
+    // console.log("username " + username + "password " + password)
+    return axios.post("/api/user", { loginData }).then(result => result.data);
+    // .then(result => result.data);
+
+  },
+  savedBookclubs: function () {
+
+    return axios.get("/api/bookclub").then(result => result.data);
+
+  },
+
+  onClickBookclub: function () {
+
+    return axios.get("/api/bookclub").then(result => result.data);
+
+  },
+
+  saveBookclub: function (bookclubData) {
+    console.log(bookclubData)
+    // console.log("username " + username + "password " + password)
+    return axios.post("/api/bookclub", {bookclubData}).then(result => result.data);
+    // .then(result => result.data);
+
+  },
+
+
+
 
 };
   // http://localhost:3000/

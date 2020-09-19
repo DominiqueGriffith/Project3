@@ -161,7 +161,9 @@ class Home extends Component {
 
                   <div className="col-md-6 col-lg-4 col-xl-3 py-2">
                     <div style={styles.card} className="card-border text-center">
-                      <a href={sBook.previewLinks}>  </a>
+
+                      <a href={sBook.previewLinks} target="_blank">  </a>
+
                       <img style={styles.img} src={`${sBook.photoLink}`} />
                       <h6>{sBook.bookName}</h6>
                       <p style={styles.formation} >By {sBook.authors}</p>

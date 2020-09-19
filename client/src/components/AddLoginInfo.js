@@ -2,28 +2,44 @@ import React, { Component } from "react";
 import { Container, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import API from "../utils/API";
 
 class AddLogInInfo extends Component {
   state =
     {
       visible: true,
-      modalIsOpen: false
+      modalIsOpen: false,
+      username:'',
+      password:''
     }
-  constructor(props) {
-    super(props)
-    this.state = {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
 
-      username: '',
-      password: ''
-    }
-  }
+  //     username: '',
+  //     password: ''
+  //   }
+  // }
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
+ 
+
+
   submitHandler = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    console.log("Hello WORLD!" + this.state.username)
+    console.log("Hello WORLD!" + this.state.password)
+
+    API.logInUser({
+      username: this.state.username,
+      password: this.state.password
+
+     }).then(function (response) {
+      console.log(response);
+
+     });
     // axios.post("https://samepage.com/bookclub/post", this.state)
     // .then (response => {
     //     console.log(response);
@@ -41,6 +57,7 @@ class AddLogInInfo extends Component {
   }
   render() {
     const { username, password } = this.state
+    console.log("THIS IS STATE OBJECT" + JSON.stringify(this.state))
     return (
       <div>
 
@@ -66,7 +83,7 @@ class AddLogInInfo extends Component {
           </br>
 
 
-          <Button color="primary" onClick={this.toggleModalThree.bind(this)} className="btn btn-warning">Log in</Button>
+          <Button color="primary" onClick={this.submitHandler} className="btn btn-warning">Log in</Button>
         </form>
         <br>
         </br>

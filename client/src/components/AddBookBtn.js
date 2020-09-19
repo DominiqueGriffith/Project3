@@ -6,7 +6,9 @@ import { Container, Col, Row, Button } from "reactstrap";
 
 function AddBookBtn(props) {
     return (
-        <Button
+
+        <button
+
             className="btn btn mb-2 btn-warning"
             data-key={props.bookKey}
             data-title={props.bookTitle}

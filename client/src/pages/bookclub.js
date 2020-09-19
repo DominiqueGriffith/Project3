@@ -173,9 +173,11 @@ class bookclubs extends Component {
 
           </div>
 
+
           <div className="w-100"></div>
           <div className="row">
             <div className="col-md-4" style={styles.col}>
+
 
 
 
