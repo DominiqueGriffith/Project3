@@ -1,4 +1,5 @@
 import React from 'react';
+
 import API from "../utils/API.js";
 
 class Likes extends React.Component {
@@ -68,3 +69,4 @@ class Likes extends React.Component {
 }
 
 export default Likes;
+

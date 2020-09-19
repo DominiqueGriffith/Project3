@@ -17,6 +17,17 @@ const styles = {
     boxSizing: "border-box",
     display: "block",
     textAlign: "center",
+    paddingTop: "15px"
+
+  },
+  cardBorder: {
+    border: "1px lightgray solid",
+    borderRadius: "5px",
+    maxWidth: "260px",
+    boxSizing: "border-box",
+    display: "block",
+    textAlign: "center",
+    padding: "5px"
 
   },
   col: {
@@ -150,7 +161,9 @@ class Home extends Component {
 
                   <div className="col-md-6 col-lg-4 col-xl-3 py-2">
                     <div style={styles.card} className="card-border text-center">
+
                       <a href={sBook.previewLinks} target="_blank">  </a>
+
                       <img style={styles.img} src={`${sBook.photoLink}`} />
                       <h6>{sBook.bookName}</h6>
                       <p style={styles.formation} >By {sBook.authors}</p>

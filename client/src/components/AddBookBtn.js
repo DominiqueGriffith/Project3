@@ -3,9 +3,12 @@ import API from "../utils/API";
 import LoggedIn from "../pages/loggedIn"
 import { Container, Col, Row, Button } from "reactstrap";
 
+
 function AddBookBtn(props) {
     return (
+
         <button
+
             className="btn btn mb-2 btn-warning"
             data-key={props.bookKey}
             data-title={props.bookTitle}
@@ -13,6 +16,7 @@ function AddBookBtn(props) {
             data-photo={props.bookPhoto}
             data-plinks={props.bookPlinks}
             data-bio={props.bookBio}
+            data-vote={props.vote}
            
 
 
@@ -22,7 +26,7 @@ function AddBookBtn(props) {
             onClick={props.handleClick}
 
 
-        >AddBook</button>
+        >AddBook</Button>
 
 
     );
