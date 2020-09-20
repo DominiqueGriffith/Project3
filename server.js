@@ -3,10 +3,17 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const session = require('express-session')
+const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3001;
 // Initialize Express
 const app = express();
+
+// create application/json parser
+const jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Configure middleware
 

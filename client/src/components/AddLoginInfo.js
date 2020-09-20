@@ -9,6 +9,8 @@ class AddLogInInfo extends Component {
     {
       visible: true,
       modalIsOpen: false,
+      // isAuthenticated: false,
+      // resData:'',
       username:'',
       password:''
     }

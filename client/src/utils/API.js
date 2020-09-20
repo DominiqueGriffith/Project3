@@ -1,5 +1,7 @@
 import axios from "axios";
 import React from "react";
+import jsonParser from "body-parser";
+import urlencodedParser from "body-parser"
 
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q="
 const APIKEY = "&key=AIzaSyC5HzoMzNglXG_H1OUXl6DHyVlhOF9KFiI"
@@ -30,34 +32,33 @@ export default {
     return axios.get("/api/books").then(result => result.data);
 
   },
-  getBookID: function(id) {
+  getBookID: function (id) {
     return axios.get("/api/books/" + id)
- 
-  },
-  voteBook: function (id) {
-    console.log(id); 
-    return axios.put("/api/books/" + id )
-    // .then(result => result.data);
 
   },
+  voteBook: function (savedVote, bookData) {
+    //  console.log(req.body.bookID)
+    if (savedVote) {
+      const url = "/api/books/" + savedVote
+
+      return axios.put(url, bookData)
+    }
 
 
-  // deleteBook: function(id) {
-  //   return axios.delete("/api/books/" + id);
-  // },
+  },
 
-  
 
-  signUpUser: function (signupData) {
-   
+  signUpUser: function (signupInput, signupData) {
+
+    const signUpURL = "/api/user"
     // console.log("username " + username + "password " + password)
-    return axios.post("/api/user", { signupData }).then(result => result.data);
+    return axios.post(signUpURL, urlencodedParser)
     // .then(result => result.data);
 
   },
 
   logInUser: function (loginData) {
-  
+    console.log(loginData)
     // console.log("username " + username + "password " + password)
     return axios.post("/api/user", { loginData }).then(result => result.data);
     // .then(result => result.data);
@@ -78,7 +79,7 @@ export default {
   saveBookclub: function (bookclubData) {
     console.log(bookclubData)
     // console.log("username " + username + "password " + password)
-    return axios.post("/api/bookclub", {bookclubData}).then(result => result.data);
+    return axios.post("/api/bookclub", { bookclubData }).then(result => result.data);
     // .then(result => result.data);
 
   },

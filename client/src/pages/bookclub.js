@@ -21,72 +21,73 @@ import Tooltip from 'react-bootstrap/Tooltip'
 
 
 
-
 const styles = {
-  card: {
-    border: "1px lightgray solid",
-    borderRadius: "5px",
-    maxWidth: "500px",
-    minHeight: "111.600px",
-
-
-  },
-
-  a: {
-    fontFamily: "Pacifico"
-
-  },
-  img: {
-    maxheight: "40px",
-    maxWidth: "40px",
-    border: "1px lightgray solid",
-  },
-
-
-  formation: {
-    textAlign: "center",
-  }
-
-
-};
+    card: {
+      border: "1px lightgray solid",
+      borderRadius: "5px",
+      maxWidth: "500px",
+      minHeight: "111.600px",
+  
+  
+    },
+  
+    a: {
+      fontFamily: "Pacifico"
+  
+    },
+    img: {
+      maxheight: "40px",
+      maxWidth: "40px",
+      border: "1px lightgray solid",
+    },
+  
+  
+    formation: {
+      textAlign: "center",
+    }
+  
+  
+  };
 
 
 
 
 class bookclubs extends Component {
 
-  state = {
-    visible: true,
-    modalIsOpen: false
-
-  }
-  toggleModal() {
+    state = {
+        visible: true,
+        modalIsOpen:false
+     
+      }
+      toggleModal (){
     this.setState({
       modalIsOpen: !this.state.modalIsOpen
+      
+      });
+    }
+    // componentDidMount() {
+  
+    //   this.setState({ data: this.savedBooks(this.state.data) });
+    //   // API.savedBooks()
+    //   //     .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+    //   //     .catch(err => console.error(err));
+    // }
+  
+  
+  
 
-    });
-  }
-  // componentDidMount() {
 
-  //   this.setState({ data: this.savedBooks(this.state.data) });
-  //   // API.savedBooks()
-  //   //     .then(savedBooks => this.setState({ savedBooks: savedBooks }))
-  //   //     .catch(err => console.error(err));
-  // }
-
-
-
-
-
-  render() {
+render () {
     return (
+  
+        <React.Fragment>
 
-      <React.Fragment>
 
 
-
-        <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+<nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+<Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
           <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
+          </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -154,18 +155,18 @@ class bookclubs extends Component {
           <div className="w-100"></div>
           <div className="row">
             <div className="col-md-12">
-              {/* <AddBookClubPost> */}
-              {/* {createdBookclub.map( (bookclub) =>{
-        return(
-<h4 >{bookclub.title}</h4>
-)
+              {/* <AddBookClubPost>
+                {createdBookclub.map((bookclub) => {
+                  return (
+                    <h4 >{bookclub.title}</h4>
+                  )
 
-        })} */}
-
-
+                })}
 
 
-              {/* </AddBookClubPost> */}
+
+
+              </AddBookClubPost> */}
 
 
 
@@ -173,11 +174,9 @@ class bookclubs extends Component {
 
           </div>
 
-
           <div className="w-100"></div>
           <div className="row">
             <div className="col-md-4" style={styles.col}>
-
 
 
 
@@ -259,7 +258,7 @@ class bookclubs extends Component {
             </div>
           </div>
           <br></br>
-          <Button className="btn btn-warning" onClick={this.toggleModal.bind(this)}>Create  book club</Button>
+          <Button className="btn btn-warning" onClick={this.toggleModal.bind(this)}>Create book club</Button>
 
         </div>
 

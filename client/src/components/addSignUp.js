@@ -23,27 +23,27 @@ class AddSignUpInfo extends Component {
 
   changeHandler = (e) => {
     // console.log("This is e.target.value" + e.target.value)
-   
+
     this.setState({ [e.target.name]: e.target.value })
 
 
     // console.log("This is username " + e.target.getAttribute("data-username"));
-    
+
   }
 
 
   submitHandler = (e) => {
     e.preventDefault()
-console.log("Hello WORLD!" + this.state.username)
-console.log("Hello WORLD!" + this.state.password)
-    API.signUpUser({
-      username: this.state.username,
-      password: this.state.password
+    console.log("Hello WORLD!" + this.state.username)
+    console.log("Hello WORLD!" + this.state.password)
+    const username = this.state.username;
+    const password = this.state.password;
+    const userInput = username + password
+    API.signUpUser(userInput)
 
-     })
 
     // this.setState({username:e.target.getAttribute("data-username")});
-    
+
     // this.setState({password:e.target.getAttribute("data-password")});
     // console.log("this is state " + this.state.username)
     // axios.post("https://samepage.com/bookclub/post", this.state)
@@ -66,7 +66,7 @@ console.log("Hello WORLD!" + this.state.password)
   }
   // handleClickPost =(e) => {
   //   e.preventDefault();
-    
+
   //   // API.signUp({
   //   //   username: e.target.getAttribute("data-user"),
   //   //   password: e.target.getAttribute("data-password"),
@@ -77,11 +77,11 @@ console.log("Hello WORLD!" + this.state.password)
   render() {
     const { username, password } = this.state
     console.log("THIS IS STATE OBJECT" + JSON.stringify(this.state))
-// this.submitHandler()
+    // this.submitHandler()
 
     return (
       <div>
-{/* onSubmit={this.submitHandler} */}
+        {/* onSubmit={this.submitHandler} */}
         <form >
           <div>
             <h6>Please enter your Username and Password?</h6>
@@ -90,8 +90,8 @@ console.log("Hello WORLD!" + this.state.password)
                   Username <input type="text"
               name="username"
               value={username}
-              onChange={this.changeHandler} 
-              data-username={username}/>
+              onChange={this.changeHandler}
+              data-username={username} />
             <br>
             </br>
             <br>
@@ -106,7 +106,7 @@ console.log("Hello WORLD!" + this.state.password)
           </br>
 
 
-          <Button color="primary" onClick={this.submitHandler}  className="btn btn-warning">Sign up</Button>
+          <Button color="primary" onClick={this.submitHandler} className="btn btn-warning">Sign up</Button>
         </form>
         <br>
         </br>
