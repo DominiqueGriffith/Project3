@@ -157,24 +157,6 @@ class Search extends Component {
     const savedBookID = e.target.getAttribute("data-ID");
     const dbBookID = e.target.getAttribute("data-dbkey");
 
-    if (!this.state.updated) {
-      this.setState((prevState, props) => {
-        return {
-          likes: prevState.likes + 1,
-          updated: true
-        };
-      });
-
-    } else {
-
-      this.setState((prevState, props) => {
-        return {
-          likes: prevState.likes + 1,
-          updated: false
-        };
-      });
-
-    }
     // console.log(savedVote)
 
     const bookData = {
@@ -209,6 +191,7 @@ class Search extends Component {
 
         // this.setState({likes: 0})
         API.savedBooks()
+        window.location.reload();
       })
     console.log(this.state.likes)
 

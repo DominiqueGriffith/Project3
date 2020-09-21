@@ -12,7 +12,7 @@ module.exports = {
     
     var username = JSON.stringify(req.body.username);
     var password = JSON.stringify(req.body.password);
-    console.log("This is req.body " +username + password)
+    // console.log("This is req.body " +username + password)
     if (username && password) {
       var hashed_password = crypto.createHash("sha1").update(req.body.password).digest("hex");
     }

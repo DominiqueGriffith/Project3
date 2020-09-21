@@ -52,7 +52,7 @@ export default {
 
     const signUpURL = "/api/user"
     // console.log("username " + username + "password " + password)
-    return axios.post(signUpURL, urlencodedParser)
+    return axios.post(signUpURL)
     // .then(result => result.data);
 
   },
