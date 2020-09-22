@@ -31,7 +31,11 @@ module.exports = {
         console.log(result.vote)
         // let voted = result.vote + 1;
         db.Book.updateOne({ _id: result._id }, { vote: result.vote + 1 })
-          .then(dbModel => {
+        
+        // db.Book.find({}).sort({vote: 'decending'}).exec(function(err, docs)
+// {
+        // })
+        .then(dbModel => {
             console.log(JSON.stringify(dbModel))
             res.json(dbModel)
           }
@@ -40,12 +44,7 @@ module.exports = {
 
       )
 
-    // .findOneAndUpdate({
-    //   _id: req.params.id
-    // },  req.body)
-    // .populate("vote")
 
-    // .catch(err => res.status(422).json(err));
   },
   // remove: function (req, res) {
   //   db.Book

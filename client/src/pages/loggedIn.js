@@ -135,7 +135,8 @@ class Search extends Component {
       authors: e.target.getAttribute("data-author"),
       photoLink: e.target.getAttribute("data-photo"),
       previewLinks: e.target.getAttribute("data-plinks"),
-      bookDescriptions: e.target.getAttribute("data-bio")
+      bookDescriptions: e.target.getAttribute("data-bio"),
+      vote: 1,
 
 
     })

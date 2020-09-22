@@ -1,3 +1,8 @@
+## SamePage
+
+using the google books API, Sampage brings the book club experience to the comfort of your home. Users are able to 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
