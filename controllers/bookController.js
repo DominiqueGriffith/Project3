@@ -6,7 +6,7 @@ module.exports = {
   findAll: function (req, res) {
     db.Book
       .find(req.query)
-      .sort({ date: -1 })
+      .sort({ vote: -1 })
       .then(dbModel => res.json(dbModel))
     // .catch(err => res.status(422).json(err));
   },
@@ -31,11 +31,13 @@ module.exports = {
         console.log(result.vote)
         // let voted = result.vote + 1;
         db.Book.updateOne({ _id: result._id }, { vote: result.vote + 1 })
+       
         
-        // db.Book.find({}).sort({vote: 'decending'}).exec(function(err, docs)
-// {
-        // })
-        .then(dbModel => {
+
+          // db.Book.find({}).sort({vote: 'decending'}).exec(function(err, docs)
+          // {
+          // })
+          .then(dbModel => {
             console.log(JSON.stringify(dbModel))
             res.json(dbModel)
           }
