@@ -247,9 +247,9 @@ class Home extends Component {
     <AddSignUp />
     </ModalBody>
           <ModalFooter>
-          <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
+          {/* <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}> */}
             <Button color="primary" className="btn btn-warning">Sign Up</Button>
-</Link>
+{/* </Link> */}
             <Button color="secondary" className="btn btn-dark" onClick={this.toggleModal.bind(this)}>Cancel</Button>
           </ModalFooter>
 

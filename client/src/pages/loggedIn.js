@@ -136,12 +136,8 @@ class Search extends Component {
       photoLink: e.target.getAttribute("data-photo"),
       previewLinks: e.target.getAttribute("data-plinks"),
       bookDescriptions: e.target.getAttribute("data-bio"),
-<<<<<<< HEAD
       vote: 1,
 
-=======
-      vote: 1
->>>>>>> 443ffbe430f9b5c39101e051f850a69aedd7c146
 
     })
     // API.saveBook(e.target);

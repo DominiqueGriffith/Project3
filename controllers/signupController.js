@@ -2,42 +2,51 @@ var db = require("../models");
 
 module.exports = {
   create: function (req, res) {
-    console.log(req.body)
+
     db.User
-      .create(req.body.signupData)
+      .create({
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password
+      })
+    console.log(req.body.email)
+    console.log(req.body.username)
+    console.log(req.body.password)
       .then(dbModel => res.json(dbModel))
     // .catch(err => res.status(422).json(err));
   },
   loggedin: function (req, res) {
-    
+
     var username = JSON.stringify(req.body.username);
     var password = JSON.stringify(req.body.password);
     // console.log("This is req.body " +username + password)
-    if (username && password) {
-      var hashed_password = crypto.createHash("sha1").update(req.body.password).digest("hex");
-    }
-    db.User
-      .find({
-        username: req.body.username,
-        password: hashed_password
 
 
-      })
-      // .then(function (req, res) {
+    // if (username && password) {
+    //   var hashed_password = crypto.createHash("sha1").update(req.body.password).digest("hex");
+    // }
+    // db.User
+    //   .find({
+    //     username: req.body.username,
+    //     password: hashed_password
 
-      //   if (res) {
-      //     console.log(req.length > 0)
-      //     req.session.loggedin = true;
-      //     req.session.userID = results[0]._id;
-      //     req.session.username = results[0].username;
-      //     res.send("userLoggedIn");
-      //     // res.sendStatus(200)
-      //   }
-      //   else {
-      //     res.send("wrongPassOrUser");
-      //     // res.sendStatus(404)
-      //   }
-      // })
+
+    //   })
+    // .then(function (req, res) {
+
+    //   if (res) {
+    //     console.log(req.length > 0)
+    //     req.session.loggedin = true;
+    //     req.session.userID = results[0]._id;
+    //     req.session.username = results[0].username;
+    //     res.send("userLoggedIn");
+    //     // res.sendStatus(200)
+    //   }
+    //   else {
+    //     res.send("wrongPassOrUser");
+    //     // res.sendStatus(404)
+    //   }
+    // })
     //     .then(function (req, res){
     //   if (req.session.loggedin) {
     //     res.sendStatus(200)

@@ -10,7 +10,8 @@ class AddSignUpInfo extends Component {
       visible: true,
       modalIsOpen: false,
       username: '',
-      password: ''
+      password: '',
+      email: ''
     }
   // constructor(props) {
   //   super(props)
@@ -38,8 +39,9 @@ class AddSignUpInfo extends Component {
     console.log("Hello WORLD!" + this.state.password)
     const username = this.state.username;
     const password = this.state.password;
-    const userInput = username + password
-    API.signUpUser(userInput)
+    const email = this.state.email;
+    const userInput = username + password + email
+    API.signUpUser(username, password, email)
 
 
     // this.setState({username:e.target.getAttribute("data-username")});
@@ -67,15 +69,15 @@ class AddSignUpInfo extends Component {
   // handleClickPost =(e) => {
   //   e.preventDefault();
 
-  //   // API.signUp({
-  //   //   username: e.target.getAttribute("data-user"),
-  //   //   password: e.target.getAttribute("data-password"),
+  //   API.signUp({
+  //     username: e.target.getAttribute("data-user"),
+  //     password: e.target.getAttribute("data-password"),
 
-  //   //  })
+  //    })
   // }
 
   render() {
-    const { username, password } = this.state
+    const { username, password, email } = this.state
     console.log("THIS IS STATE OBJECT" + JSON.stringify(this.state))
     // this.submitHandler()
 
@@ -84,7 +86,16 @@ class AddSignUpInfo extends Component {
         {/* onSubmit={this.submitHandler} */}
         <form >
           <div>
-            <h6>Please enter your Username and Password?</h6>
+            <h6>Please enter your E-mail address, Username and Password?</h6>
+            <br>
+            </br>
+                  Email <input type="email"
+              name="email"
+              value={email}
+              onChange={this.changeHandler}
+              data-username={email} />
+            <br>
+            </br>
             <br>
             </br>
                   Username <input type="text"
@@ -106,7 +117,7 @@ class AddSignUpInfo extends Component {
           </br>
 
 
-          {/* <Button color="primary" onClick={this.submitHandler} className="btn btn-warning">Sign up</Button> */}
+          <Button color="primary" onClick={this.submitHandler} className="btn btn-warning">Sign up</Button>
         </form>
         <br>
         </br>
