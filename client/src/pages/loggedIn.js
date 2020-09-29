@@ -231,7 +231,9 @@ class Search extends Component {
 
 
 
-
+  handleDashboardClick = () => {
+    API.dashboard()
+      }
 
 
 
@@ -274,6 +276,11 @@ class Search extends Component {
               <li className="nav-item active">
                 <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"}>
                   <button className="btn btn-danger" onClick="" type="button" id="sign-out">Bookclubs</button>
+                </Link>
+              </li>
+              <li className="nav-item active">
+              <Link to="/dashboard" className={window.location.pathname === "/dashboard" ? "nav-link active" : "nav-link"}>
+                <Button handleClick={this.handleDashboardClick}>Dashboard</Button>
                 </Link>
               </li>
             </ul>

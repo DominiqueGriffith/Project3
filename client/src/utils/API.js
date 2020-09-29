@@ -83,7 +83,11 @@ export default {
     // .then(result => result.data);
 
   },
+  dashboard: function () {
 
+    return axios.get("/api/dashboard").then(result => result.data);
+
+  },
 
 
 

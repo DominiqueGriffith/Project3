@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 // import Search from "./pages/search";
 import loggedIn from "./pages/loggedIn";
 import bookclub from "./pages/bookclub";
+import dashboard from "./pages/dashboard"
 import withAuth from "./withAuth.js";
 import './fonts.css';
 // import logged from "./components/pages/loggedIn";
@@ -21,6 +22,8 @@ function App() {
       
         {/* <Route exact path="/search" component={Search} /> */}
         <Route exact path="/bookclub" component={bookclub} />
+
+        <Route exact path="/dashboard" component={dashboard} />
         
         {/* <Route exact path="/bookclub" component={} /> */}
         </Switch>
