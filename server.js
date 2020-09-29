@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const User = require('./models/User')
-const bcrypt = require('bcrypt')
+
 
 const PORT = process.env.PORT || 3001;
 // Initialize Express

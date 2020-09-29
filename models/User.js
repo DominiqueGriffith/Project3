@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
-
-var bcrypt  =require("../server.js")
+const bcrypt = require('bcrypt')
 
 var Schema = mongoose.Schema;
 

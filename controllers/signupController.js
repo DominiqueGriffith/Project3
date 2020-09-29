@@ -8,11 +8,15 @@ module.exports = {
         email: req.body.email,
         username: req.body.username,
         password: req.body.password
-      })
-    console.log(req.body.email)
-    console.log(req.body.username)
-    console.log(req.body.password)
-      .then(dbModel => res.json(dbModel))
+      }).then(dbModel => {
+        console.log(JSON.stringify(dbModel))
+        res.json(dbModel)
+        console.log(req.body.email)
+        console.log(req.body.username)
+        console.log(req.body.password)
+      }
+      )
+ 
     // .catch(err => res.status(422).json(err));
   },
   loggedin: function (req, res) {
