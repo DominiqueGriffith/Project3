@@ -1,6 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
+const sessionChecker = require("../server.js")
 
 // API Routes
 router.use("/api", apiRoutes);

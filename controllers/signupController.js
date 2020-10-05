@@ -1,21 +1,33 @@
 var db = require("../models");
+const sessionChecker = require("../server.js")
 
 module.exports = {
   create: function (req, res) {
-
     db.User
       .create({
         email: req.body.email,
         username: req.body.username,
         password: req.body.password
-      }).then(dbModel => {
-        console.log(JSON.stringify(dbModel))
-        res.json(dbModel)
+      }).then(user => {
+        req.session.user = user.dataValues;
         console.log(req.body.email)
         console.log(req.body.username)
         console.log(req.body.password)
-      }
-      )
+    })
+    // .catch(error => {
+    //     res.redirect('/signup');
+    // });
+
+      
+      // .then(dbModel => {
+      //   console.log(JSON.stringify(dbModel))
+      //   res.json(dbModel)
+      //   console.log(req.body.email)
+      //   console.log(req.body.username)
+      //   console.log(req.body.password)
+      // }
+      // )
+      
  
     // .catch(err => res.status(422).json(err));
   },
@@ -23,6 +35,25 @@ module.exports = {
 
     var username = JSON.stringify(req.body.username);
     var password = JSON.stringify(req.body.password);
+
+    try {
+      var user = db.User.findOne({ username: username }).exec();
+      if(!user) {
+          res.redirect("/user");
+      }
+      user.comparePassword(password, (error, match) => {
+          if(!match) {
+            res.redirect("/user");
+          }
+      });
+      req.session.user = user;
+      res.redirect("/dashboard");
+  } catch (error) {
+    console.log(error)
+  }
+
+
+
     // console.log("This is req.body " +username + password)
 
 

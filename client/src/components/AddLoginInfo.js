@@ -84,8 +84,9 @@ class AddLogInInfo extends Component {
           <br>
           </br>
 
-
+          <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
           <Button color="primary" onClick={this.submitHandler} className="btn btn-warning">Log in</Button>
+          </Link>
         </form>
         <br>
         </br>

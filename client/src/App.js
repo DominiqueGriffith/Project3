@@ -18,12 +18,12 @@ function App() {
       
         <Route exact path="/" component={Home} />
         
-        <Route exact path="/loggedIn" component={loggedIn} />
+        <Route exact path="/loggedIn" component={withAuth(loggedIn)} />
       
         {/* <Route exact path="/search" component={Search} /> */}
-        <Route exact path="/bookclub" component={bookclub} />
+        <Route exact path="/bookclub" component={withAuth(bookclub)} />
 
-        <Route exact path="/dashboard" component={dashboard} />
+        <Route exact path="/dashboard" component={withAuth(dashboard)} />
         
         {/* <Route exact path="/bookclub" component={} /> */}
         </Switch>

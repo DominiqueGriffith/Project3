@@ -48,11 +48,11 @@ export default {
   },
 
 
-  signUpUser: function (email,username , password) {
+  signUpUser: function (email, username, password) {
 
     const signUpURL = "/api/user"
     // console.log("username " + username + "password " + password)
-    return axios.post(signUpURL, {email,username, password}).then(result => result.data);
+    return axios.post(signUpURL, { email, username, password }).then(result => result.data);
     // .then(result => result.data);
 
   },
@@ -79,13 +79,13 @@ export default {
   saveBookclub: function (bookclubData) {
     console.log(bookclubData)
     // console.log("username " + username + "password " + password)
-    return axios.post("/api/bookclub", { bookclubData }).then(result => result.data);
+    return axios.post("/api/bookclub", { bookclubData }).then(result => result.data)
     // .then(result => result.data);
 
   },
   dashboard: function () {
 
-    return axios.get("/api/dashboard").then(result => result.data);
+    return axios.get("/api/user").then(result => result.data);
 
   },
 

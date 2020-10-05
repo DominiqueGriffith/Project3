@@ -13,7 +13,7 @@ module.exports = {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
-                res.redirect('/dashboard');
+                res.redirect('/');
             }
         });
     // });
