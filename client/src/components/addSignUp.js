@@ -41,7 +41,7 @@ class AddSignUpInfo extends Component {
     const password = this.state.password;
     const email = this.state.email;
     const userInput = username + password + email
-    API.signUpUser(username, password, email)
+    API.signUpUser(email, username, password)
 
 
     // this.setState({username:e.target.getAttribute("data-username")});
@@ -59,9 +59,9 @@ class AddSignUpInfo extends Component {
   // handleClickGet = () => {
 
   // }
-  toggleModal() {
+  toggleModalFour() {
     this.setState({
-      modalThreeIsOpen: !this.state.modalThreeIsOpen
+      modalFourIsOpen: !this.state.modalFourIsOpen
 
 
     });
@@ -116,22 +116,23 @@ class AddSignUpInfo extends Component {
           <br>
           </br>
 
-
-          <Button color="primary" onClick={this.submitHandler} className="btn btn-warning">Sign up</Button>
+          
+          <Button color="primary" onClick={this.submitHandler}  className="btn btn-warning">Sign up</Button>
+          {/* onClick={this.toggleModalFour.bind(this)} */}
         </form>
         <br>
         </br>
 
-        <Modal isOpen={this.state.modalIsOpen}>
-          <ModalHeader toggle={this.toggleModal.bind(this)}>You're All Set!</ModalHeader>
+        <Modal isOpen={this.state.modalFourIsOpen}>
+          <ModalHeader toggle={this.toggleModalFour.bind(this)}>You're All Set!</ModalHeader>
 
           <ModalBody>
             Join Now!
           </ModalBody>
           <ModalFooter>
-            <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
-              <Button color="primary" onClick={this.toggleModal.bind(this)} className="btn btn-warning">Okay</Button>
-            </Link>
+          <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
+              <Button color="primary" onClick={this.toggleModalFour.bind(this)} className="btn btn-warning">Okay</Button>
+              </Link>
 
           </ModalFooter>
 

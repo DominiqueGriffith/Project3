@@ -4,18 +4,18 @@ const bcrypt = require('bcrypt')
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
+  email: {
+    type: String,
+    unique: true,
+    required: true
+
+  },
+
   username: {
     type: String,
     unique: true,
     required: true
 
-    // trim: true,
-    // required: "Username is Required"
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: true
   },
   password: {
     type: String,
@@ -34,16 +34,16 @@ var UserSchema = new Schema({
 });
 
 UserSchema.pre("save", function (next) {
-  if (!this.isModified("password")){
+  if (!this.isModified("password")) {
     return next()
   }
-  this.password = bcrypt.hashSync(this.password,10)
+  this.password = bcrypt.hashSync(this.password, 10)
   next()
 })
 
 //compare password
-UserSchema.methods.comparePassword = function (plainText,callback){
-  return callback(null,bcrypt.compareSync(plainText, this.password))
+UserSchema.methods.comparePassword = function (plainText, callback) {
+  return callback(null, bcrypt.compareSync(plainText, this.password))
 }
 
 const userModel = mongoose.model("user", UserSchema)

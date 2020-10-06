@@ -3,32 +3,65 @@ const sessionChecker = require("../server.js")
 
 module.exports = {
   create: function (req, res) {
+
+    req.session.loggedin = true;
     db.User
       .create({
-        email: req.body.email,
         username: req.body.username,
-        password: req.body.password
-      }).then(user => {
-        req.session.user = user.dataValues;
-        console.log(req.body.email)
-        console.log(req.body.username)
-        console.log(req.body.password)
-    })
+        password: req.body.password,
+        email: req.body.email
+
+
+      })
+      .then(function () {
+        res.redirect(307 , "/dashboard")
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+
+    // (req,res => {
+
+
+    //   if (req.session.loggedin) {
+    //     res.sendStatus(200)
+    //     res.redirect("/user");
+    //   }
+    //   else {
+    //     res.sendStatus(404)
+    //     // console.log(docs)
+    //     // req.session.user = docs;
+    //     res.redirect("/dashboard");
+    //   }
+    // }
+    // )
+    // if (err){
+    //   res.redirect("/signup");
+    // }
+    // else () {
+
+    // }
+    // .then(user => {
+    //   req.session.user = user.dataValues;
+    //   console.log(req.body)
+    //   // console.log(req.body.username)
+    //   // console.log(req.body.password)
+    // })
     // .catch(error => {
     //     res.redirect('/signup');
     // });
 
-      
-      // .then(dbModel => {
-      //   console.log(JSON.stringify(dbModel))
-      //   res.json(dbModel)
-      //   console.log(req.body.email)
-      //   console.log(req.body.username)
-      //   console.log(req.body.password)
-      // }
-      // )
-      
- 
+
+    // .then(dbModel => {
+    //   console.log(JSON.stringify(dbModel))
+    //   res.json(dbModel)
+    //   console.log(req.body.email)
+    //   console.log(req.body.username)
+    //   console.log(req.body.password)
+    // }
+    // )
+
+
     // .catch(err => res.status(422).json(err));
   },
   loggedin: function (req, res) {
@@ -38,19 +71,19 @@ module.exports = {
 
     try {
       var user = db.User.findOne({ username: username }).exec();
-      if(!user) {
-          res.redirect("/user");
+      if (!user) {
+        res.redirect("/user");
       }
       user.comparePassword(password, (error, match) => {
-          if(!match) {
-            res.redirect("/user");
-          }
+        if (!match) {
+          res.redirect("/user");
+        }
       });
       req.session.user = user;
       res.redirect("/dashboard");
-  } catch (error) {
-    console.log(error)
-  }
+    } catch (error) {
+      console.log(error)
+    }
 
 
 
