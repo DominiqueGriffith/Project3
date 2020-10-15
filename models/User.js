@@ -11,12 +11,12 @@ var UserSchema = new Schema({
 
   },
 
-  username: {
-    type: String,
-    unique: true,
-    required: true
+  // username: {
+  //   type: String,
+  //   unique: true,
+  //   required: true
 
-  },
+  // },
   password: {
     type: String,
 
@@ -34,7 +34,9 @@ var UserSchema = new Schema({
 });
 
 UserSchema.pre("save", function (next) {
+   // Check if document is new or a new password has been set
   if (!this.isModified("password")) {
+       // Saving reference to this because of changing scopes
     return next()
   }
   this.password = bcrypt.hashSync(this.password, 10)
@@ -42,8 +44,18 @@ UserSchema.pre("save", function (next) {
 })
 
 //compare password
-UserSchema.methods.comparePassword = function (plainText, callback) {
-  return callback(null, bcrypt.compareSync(plainText, this.password))
+// UserSchema.methods.comparePassword = function (plainText, callback) {
+//   return callback(null, bcrypt.compareSync(plainText, this.password))
+// }
+
+UserSchema.methods.isCorrectPassword = function(password, callback){
+  bcrypt.compare(password, this.password, function(err, same) {
+    if (err) {
+      callback(err);
+    } else {
+      callback(err, same);
+    }
+  });
 }
 
 const userModel = mongoose.model("user", UserSchema)
