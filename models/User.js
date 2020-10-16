@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 
 var Schema = mongoose.Schema;
@@ -36,6 +36,7 @@ var UserSchema = new Schema({
 UserSchema.pre("save", function (next) {
    // Check if document is new or a new password has been set
   if (!this.isModified("password")) {
+    
        // Saving reference to this because of changing scopes
     return next()
   }

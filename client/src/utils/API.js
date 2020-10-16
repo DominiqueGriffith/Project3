@@ -48,11 +48,12 @@ export default {
   },
 
 
-  signUpUser: function (email, username, password) {
+  signUpUser: function (email, password) {
 
     const signUpURL = "/api/user"
     // console.log("username " + username + "password " + password)
-    return axios.post(signUpURL, { email, username, password }).then(result => result.data);
+    return axios.post(signUpURL, { email, password }).then(result => result.data);
+    // return axios.post(signUpURL, { email, username, password }).then(result => result.data);
     // .then(result => result.data);
 
   },
