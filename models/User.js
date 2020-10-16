@@ -59,6 +59,17 @@ UserSchema.methods.isCorrectPassword = function(password, callback){
   });
 }
 
+// //delete token
+
+// UserSchema.methods.deleteToken=function(token,cb){
+//   var user=this;
+
+//   user.update({$unset : {token :1}},function(err,user){
+//       if(err) return cb(err);
+//       cb(null,user);
+//   })
+// }
+
 const userModel = mongoose.model("user", UserSchema)
 
 var User = mongoose.model("User", UserSchema);

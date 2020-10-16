@@ -45,6 +45,7 @@ import Secret from './pages/secret';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import withAuth from './withAuth';
+import Signout from './pages/signout';
 export default class App extends Component {
   render() {
     return (
@@ -55,12 +56,15 @@ export default class App extends Component {
           <li><Link to="/secret">Secret</Link></li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/signup">signup</Link></li>
+          <li><Link to="/signout">signout</Link></li>
+
         </ul>
         <Switch>
           <Route path="/" exact component={Home2} />
           <Route path="/secret" component={withAuth(Secret)} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/signout" component={Signout} />
         </Switch>
       </div>
       </Router>

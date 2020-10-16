@@ -71,7 +71,9 @@ app.get('/api/home2', function(req, res) {
   res.send('Welcome!');
 });
 app.get('/api/secret', withAuth, function(req, res) {
-  res.send('The password is potato');
+  // res.send('The password is potato');
+  res.send('Hello ' + req.email);
+
 });
 
 // a simple route that will return a 200 HTTP status if our requester has a valid token:
@@ -134,28 +136,36 @@ app.post('/api/authenticate', function(req, res) {
   });
 });
 
+//logout user
+app.get('/api/logout',withAuth,function(req,res){
+
+res.clearCookie('token', { httpOnly: true })
+req.session.destroy();
+res.sendStatus(200);
+}); 
+
 // adding the middleware to our express setup so express can parse cookies passed by our browser
 app.use(cookieParser());
 
 
 
 
-// middleware function to check for logged-in users
-const sessionChecker = (req, res, next) => {
-  if (req.session.user && req.cookies.user_sid) {
-    // res.redirect("/dashboard");
-    res.sendStatus(200)
-    res.sendStatus("you are loggedin")
-  } else {
-    // next();
-    res.sendStatus(404)
-  }
-};
+// // middleware function to check for logged-in usersd
+// const sessionChecker = (req, res, next) => {
+//   if (req.session.user && req.cookies.user_sid) {
+//     // res.redirect("/dashboard");
+//     res.sendStatus(200)
+//     res.sendStatus("you are loggedin")
+//   } else {
+//     // next();
+//     res.sendStatus(404)
+//   }
+// };
 
-// route for Home-Page
-app.get('/', sessionChecker, (req, res) => {
-  res.redirect('/user');
-});
+// // route for Home-Page
+// app.get('/', sessionChecker, (req, res) => {
+//   res.redirect('/user');
+// });
 
 // // route for Home-Page
 // app.get("/", sessionChecker, (req, res) => {
