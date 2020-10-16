@@ -9,18 +9,19 @@ module.exports = {
       .create({
         // username: req.body.username,
         email: req.body.email,
+        username: req.body.username,
         password: req.body.password
 
 
       }).then(dbModel => res.json(dbModel))
-      console.log("New USER!" + req.body.email + req.body.password)
-     
-      // .then(function () {
-      //   res.redirect(307 , "/dashboard")
-      // })
-      // .catch(function(err) {
-      //   res.status(401).json(err);
-      // });
+    console.log("New USER!" + req.body.email + req.body.password)
+
+    // .then(function () {
+    //   res.redirect(307 , "/dashboard")
+    // })
+    // .catch(function(err) {
+    //   res.status(401).json(err);
+    // });
 
     // (req,res => {
 

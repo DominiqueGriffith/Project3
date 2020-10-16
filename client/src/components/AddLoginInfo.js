@@ -12,6 +12,7 @@ class AddLogInInfo extends Component {
       // isAuthenticated: false,
       // resData:'',
       username:'',
+      email: '',
       password:''
     }
   // constructor(props) {
@@ -27,36 +28,30 @@ class AddLogInInfo extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
  
+  onSubmit = (event) => {
+    event.preventDefault();
+    fetch('/api/authenticate', {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => {
+        if (res.status === 200) {
+          this.props.history.push('/');
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Error logging in please try again');
+      });
+    }
 
-
-  submitHandler = (e) => {
-    e.preventDefault()
-    console.log("Hello WORLD!" + this.state.username)
-    console.log("Hello WORLD!" + this.state.password)
-
-    API.logInUser({
-      username: this.state.username,
-      password: this.state.password
-
-     }).then(function (response) {
-      console.log(response);
-
-     });
-    // axios.post("https://samepage.com/bookclub/post", this.state)
-    // .then (response => {
-    //     console.log(response);
-    // })
-    // .catch (error => {
-    //     console.log(error);
-    // })
-  }
-  toggleModalThree() {
-    this.setState({
-      modalThreeIsOpen: !this.state.modalThreeIsOpen
-
-
-    });
-  }
+ 
   render() {
     const { username, password } = this.state
     console.log("THIS IS STATE OBJECT" + JSON.stringify(this.state))

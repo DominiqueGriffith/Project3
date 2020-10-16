@@ -72,7 +72,7 @@ app.get('/api/home2', function(req, res) {
 });
 app.get('/api/secret', withAuth, function(req, res) {
   // res.send('The password is potato');
-  res.send('Hello ' + req.email);
+  res.send('Hello ' + req.username);
 
 });
 
@@ -83,8 +83,8 @@ app.get('/checkToken', withAuth, function(req, res) {
 
 // POST route to register a user
 app.post('/api/register', function(req, res) {
-  const { email, password } = req.body;
-  const user = new User({ email, password });
+  const { email, username, password } = req.body;
+  const user = new User({ email, username, password });
   user.save(function(err) {
     if (err) {
       res.status(500)
@@ -97,8 +97,8 @@ app.post('/api/register', function(req, res) {
 
 //authenticate checker
 app.post('/api/authenticate', function(req, res) {
-  const { email, password } = req.body;
-  User.findOne({ email }, function(err, user) {
+  const { email, username, password } = req.body;
+  User.findOne({ username }, function(err, user) {
     if (err) {
       console.error(err);
       res.status(500)
@@ -108,7 +108,7 @@ app.post('/api/authenticate', function(req, res) {
     } else if (!user) {
       res.status(401)
         .json({
-          error: 'Incorrect email or password'
+          error: 'Incorrect user or password'
         });
     } else {
       user.isCorrectPassword(password, function(err, same) {
@@ -120,11 +120,11 @@ app.post('/api/authenticate', function(req, res) {
         } else if (!same) {
           res.status(401)
             .json({
-              error: 'Incorrect email or password'
+              error: 'Incorrect user or password'
           });
         } else {
           // Issue token
-          const payload = { email };
+          const payload = { username };
           const token = jwt.sign(payload, secret, {
             expiresIn: '1h'
           });

@@ -117,7 +117,7 @@ class AddSignUpInfo extends Component {
           </br>
 
           
-          <Button color="primary" onClick={this.submitHandler}  className="btn btn-warning">Sign up</Button>
+          {/* <Button color="primary" onClick={this.submitHandler}  className="btn btn-warning">Sign up</Button> */}
           {/* onClick={this.toggleModalFour.bind(this)} */}
         </form>
         <br>
