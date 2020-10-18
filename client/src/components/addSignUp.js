@@ -86,7 +86,7 @@ class AddSignUpInfo extends Component {
         {/* onSubmit={this.submitHandler} */}
         <form >
           <div>
-            <h6>Please enter your E-mail address, Username and Password?</h6>
+            {/* <h6>Please enter your E-mail address, Username and Password?</h6> */}
             <br>
             </br>
                   Email <input type="email"
@@ -123,7 +123,7 @@ class AddSignUpInfo extends Component {
         <br>
         </br>
 
-        <Modal isOpen={this.state.modalFourIsOpen}>
+        {/* <Modal isOpen={this.state.modalFourIsOpen}>
           <ModalHeader toggle={this.toggleModalFour.bind(this)}>You're All Set!</ModalHeader>
 
           <ModalBody>
@@ -137,7 +137,7 @@ class AddSignUpInfo extends Component {
           </ModalFooter>
 
 
-        </Modal>
+        </Modal> */}
       </div>
     )
   }

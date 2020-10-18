@@ -42,7 +42,7 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container, Row, Col, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 import AddLogInInfo from "./components/AddLoginInfo";
-import AddSignUp from "./components/addSignUp.js";
+import AddSignUpInfo from "./components/addSignUp.js";
 import Home2 from './pages/home2';
 import Secret from './pages/secret';
 import Login from './pages/login';
@@ -150,7 +150,7 @@ export default class App extends Component {
                 <ModalHeader toggle={this.toggleModalTwo.bind(this)}>Please enter your Username and Password</ModalHeader>
 
                 <ModalBody>
-                  <AddLogInInfo />
+                  <Login />
                 </ModalBody>
                 <ModalFooter>
 
@@ -165,15 +165,13 @@ export default class App extends Component {
 
 
               <Modal isOpen={this.state.modalIsOpen}>
-                <ModalHeader toggle={this.toggleModal.bind(this)}>Please create a Username and Password</ModalHeader>
+                <ModalHeader toggle={this.toggleModal.bind(this)}>Please enter your E-mail address, Username and Password</ModalHeader>
 
                 <ModalBody>
-                  <AddSignUp />
+                  <Signup />
                 </ModalBody>
                 <ModalFooter>
-                  <Link to="/login">
-                    <Button color="primary" className="btn btn-warning">Sign Up</Button>
-                  </Link>
+                
                   <Button color="secondary" className="btn btn-dark" onClick={this.toggleModal.bind(this)}>Cancel</Button>
                 </ModalFooter>
 

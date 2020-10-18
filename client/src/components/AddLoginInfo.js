@@ -86,7 +86,7 @@ class AddLogInInfo extends Component {
         <br>
         </br>
 
-        <Modal isOpen={this.state.modalThreeIsOpen}>
+        {/* <Modal isOpen={this.state.modalThreeIsOpen}>
           <ModalHeader toggle={this.toggleModalThree.bind(this)}>Logged In Successful</ModalHeader>
 
           <ModalBody>
@@ -100,7 +100,7 @@ class AddLogInInfo extends Component {
           </ModalFooter>
 
 
-        </Modal>
+        </Modal> */}
       </div>
     )
   }

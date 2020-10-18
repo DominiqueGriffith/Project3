@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Container, Row, Col, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
+
 export default class Login extends Component {
   constructor(props) {
     super(props)
@@ -39,8 +41,8 @@ export default class Login extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Login Below!</h1>
-        <input
+        
+       Username: <input
           type="username"
           name="username"
           placeholder="Enter username"
@@ -48,7 +50,11 @@ export default class Login extends Component {
           onChange={this.handleInputChange}
           required
         />
-        <input
+        <br>
+        </br>
+        <br>
+        </br>
+        Password: <input
           type="password"
           name="password"
           placeholder="Enter password"
@@ -56,7 +62,12 @@ export default class Login extends Component {
           onChange={this.handleInputChange}
           required
         />
-       <input type="submit" value="Submit"/>
+        <br>
+        </br>
+        <br>
+        </br>
+                <Button type="submit" value="Submit" color="primary" className="btn btn-warning">Login</Button>
+
       </form>
     );
   }
