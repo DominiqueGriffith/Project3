@@ -17,8 +17,8 @@ export default class Home2 extends Component {
     render() {
       return (
         <div>
-          <h1>Home 2</h1>
-          <p>{this.state.message}</p>
+         
+          <h3>{this.state.message}</h3>
         </div>
       );
     }

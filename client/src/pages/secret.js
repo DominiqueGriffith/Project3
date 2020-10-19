@@ -17,8 +17,8 @@ export default class Secret extends Component {
     render() {
       return (
         <div>
-          <h1>Secret</h1>
-          <p>{this.state.message}</p>
+    
+          <h4>{this.state.message}</h4>
         </div>
       );
     }

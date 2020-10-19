@@ -68,7 +68,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/home2', function(req, res) {
-  res.send('Welcome!');
+  res.send('Welcome to SamePage!');
 });
 app.get('/api/secret', withAuth, function(req, res) {
   // res.send('The password is potato');

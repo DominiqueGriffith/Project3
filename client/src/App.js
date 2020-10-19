@@ -142,6 +142,11 @@ export default class App extends Component {
                     <Button color="primary" className="btn btn-warning" onClick="">Dashboard</Button>
                   </Link>
                 </li>
+                <li>
+                  <Link to="/signout">
+                    <Button color="primary" className="btn btn-warning" onClick="">Signout</Button>
+                  </Link>
+                </li>
 
 
               </ul>
@@ -179,14 +184,14 @@ export default class App extends Component {
               </Modal>
             </div>
           </nav>
-          <ul>
+          {/* <ul>
             <li><Link to="/">Home</Link></li>
             <li>Secret</li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/signup">signup</Link></li>
             <li><Link to="/signout">signout</Link></li>
 
-          </ul>
+          </ul> */}
           <Switch>
             <Route path="/" exact component={Home2} />
             <Route path="/secret" component={withAuth(Secret)} />

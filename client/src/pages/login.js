@@ -27,7 +27,9 @@ export default class Login extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          this.props.history.push('/');
+          // this.props.history.push('/api/home2');
+          window.location.reload();
+          // fetch('/api/secret') 
         } else {
           const error = new Error(res.error);
           throw error;
