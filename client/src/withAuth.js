@@ -14,6 +14,8 @@ export default function withAuth(ComponentToProtect) {
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });
+              
+            
           } else {
             const error = new Error(res.error);
             throw error;
@@ -27,7 +29,8 @@ export default function withAuth(ComponentToProtect) {
     render() {
       const { loading, redirect } = this.state;
       if (loading) {
-        return null;
+        fetch('/api/secret')
+      
       }
       if (redirect) {
         return <Redirect to="/" />  

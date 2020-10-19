@@ -252,7 +252,7 @@ class Search extends Component {
       <React.Fragment>
 
 
-
+{/* 
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
           <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
             <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
@@ -308,7 +308,7 @@ class Search extends Component {
 
             </ul>
           </div>
-        </nav>
+        </nav> */}
 
 
 

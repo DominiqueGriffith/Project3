@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
+import Search from './loggedIn';
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,8 +29,11 @@ export default class Login extends Component {
       })
       .then(res => {
         if (res.status === 200) {
+          
           // this.props.history.push('/api/home2');
-          window.location.reload();
+             window.location.reload();
+          
+       
           // fetch('/api/secret') 
         } else {
           const error = new Error(res.error);
@@ -71,6 +76,9 @@ export default class Login extends Component {
                 <Button type="submit" value="Submit" color="primary" className="btn btn-warning">Login</Button>
 
       </form>
+      
     );
+  
   }
+  
 }

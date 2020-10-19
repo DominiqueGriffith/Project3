@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
 
 export default class Home2 extends Component {
     constructor() {
@@ -13,6 +15,7 @@ export default class Home2 extends Component {
       fetch('/api/home2')
         .then(res => res.text())
         .then(res => this.setState({message: res}));
+       
     }
     render() {
       return (

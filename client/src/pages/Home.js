@@ -89,6 +89,10 @@ class Home extends Component {
       .then(dataBooks => {
         console.log(JSON.stringify(dataBooks))
         this.setState({ saved: dataBooks })
+        fetch('/api/home2')
+        .then(res => res.text())
+        .then(res => this.setState({message: res}));
+       
       })
 
     // .then(saved => this.setState({ saved: saved }))
@@ -117,7 +121,7 @@ class Home extends Component {
       
       <React.Fragment>
          
-        <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        {/* <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
           <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
           </Link>
@@ -136,7 +140,7 @@ class Home extends Component {
             </ul>
 
           </div>
-        </nav>
+        </nav> */}
 
         <div className="container">
           <div className="w-100"></div>
@@ -153,6 +157,7 @@ class Home extends Component {
             </div>
             <div className="row">
               <div className="col-md-12">
+              {/* <h1>Welcome to SamePage</h1> */}
                 <h4>Top Rated Books</h4>
               </div>
             </div>
