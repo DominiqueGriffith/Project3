@@ -161,153 +161,15 @@ export default class App extends Component {
         // setResult(data.data.items)
       })
   }
+  addBook(){
+    
+  }
 
   render() {
     return (
       <Router>
         <div>
-          <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-            <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
-              <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
-            </Link>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <a color="primary" className="nav-link" style={{ cursor: 'pointer' }} onClick={this.toggleModalTwo.bind(this)}>Login</a>
-                </li>
-                <li className="nav-item active">
-                  <Button color="primary" className="btn btn-warning" onClick={this.toggleModal.bind(this)}>Sign Up</Button>
-                </li>
-                <li>
-                  <Link to="/secret">
-                    <Button color="primary" className="btn btn-warning" onClick="">Dashboard</Button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signout">
-                    <Button color="primary" className="btn btn-warning" onClick="">Signout</Button>
-                  </Link>
-                </li>
-              </ul>
-
-              <ul className="nav navbar-right">
-                <form id="searchbar"
-                  currentSearch={this.state.currentSearch}
-                  onSubmit={this.handleSubmit}>
-
-                  <input id="booksearch"
-                    value={this.state.title}
-                    className="form-control mr-sm-2"
-
-
-                    type="text"
-                    onChange={this.handleChange}
-                    placeholder="Search by Author or Title"
-                    aria-label="Search"
-                    name="title"
-                  ></input>
-                  <button id="book-submit"
-                    className="btn btn-warning"
-                    type="submit">Search</button>
-                </form>
-              </ul>
-              </div>
-              </nav>
-
-              <Container>
-              <h1>Welcome to SamePage</h1>
-                <Row>
-                  
-                  {this.state.books.map(book => (
-
-
-                    <div className="col-md-6 col-lg-4 col-xl-3 py-2">
-                      
-                      <div style={styles.card} className="card-border text-center">
-
-
-
-
-                        <a href={book.volumeInfo.previewLink}>  </a>
-                        <img style={styles.img} src={
-                          book.volumeInfo.imageLinks === undefined
-                            ? ""
-                            : `${book.volumeInfo.imageLinks.thumbnail}`
-                        } alt={book.title} className="img py-2" />
-
-                        <h6  >{book.volumeInfo.title}</h6>
-                        <p style={styles.formation} >By {book.volumeInfo.authors}</p>
-
-                        {/* <AddBookBtn handleClick={this.handleItemClick} id="addBook" bookKey={book.id} bookTitle={book.volumeInfo.title} bookAuthor={book.volumeInfo.authors}
-                          bookPhoto={
-                            book.volumeInfo.imageLinks === undefined
-                              ? ""
-                              : `${book.volumeInfo.imageLinks.thumbnail}`
-                          } bookPlinks={book.volumeInfo.previewLink} bookBio={book.volumeInfo.description}
-
-                        > </AddBookBtn> */}
-
-                        {/* {this.state.savedBooks.map(book => book.volumeInfo).includes(book._id) ? "Unsave" : "Save"} */}
-
-                        <a href={book.volumeInfo.previewLink} target="_blank">
-                          <Button className="btn btn-danger mb-2">Buy Book</Button>
-                        </a>
-
-                        {/* {<p >BOOK BIO: {book.volumeInfo.description}</p>} */}
-                        <Accordion >
-                          <Card>
-                            <Card.Header>
-                              <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                Bio!
-                </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="0">
-                              <Card.Body>{book.volumeInfo.description}</Card.Body>
-                            </Accordion.Collapse>
-                          </Card>
-
-                        </Accordion>
-                      </div>
-                    </div>
-
-
-
-
-                  ))}
-                </Row>
-              </Container>
-
-              <Modal isOpen={this.state.modalTwoIsOpen}>
-                <ModalHeader toggle={this.toggleModalTwo.bind(this)}>Please enter your Username and Password</ModalHeader>
-
-                <ModalBody>
-                  <Login />
-                </ModalBody>
-                <ModalFooter>
-
-
-
-                  <Button color="secondary" className="btn btn-dark" onClick={this.toggleModalTwo.bind(this)}>Cancel</Button>
-                </ModalFooter>
-
-
-              </Modal>
-
-
-
-              <Modal isOpen={this.state.modalIsOpen}>
-                <ModalHeader toggle={this.toggleModal.bind(this)}>Please enter your E-mail address, Username and Password</ModalHeader>
-
-                <ModalBody>
-                  <Signup />
-                </ModalBody>
-                <ModalFooter>
-
-                  <Button color="secondary" className="btn btn-dark" onClick={this.toggleModal.bind(this)}>Cancel</Button>
-                </ModalFooter>
-
-
-              </Modal>
+        
            
 
 

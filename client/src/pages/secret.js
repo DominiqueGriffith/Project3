@@ -63,7 +63,7 @@ export default class Secret extends Component {
     fetch('/api/secret')
       .then(res => res.text())
       .then(res => this.setState({ message: res }));
-      API.savedBooks()
+    API.savedBooks()
       .then(dataBooks => {
         console.log(JSON.stringify(dataBooks))
         this.setState({ saved: dataBooks })
@@ -190,7 +190,7 @@ export default class Secret extends Component {
     return (
 
       <div>
-{/* <form id="searchbar"
+        {/* <form id="searchbar"
                 currentSearch={this.state.currentSearch}
                 onSubmit={this.handleSubmit}
               >
@@ -211,8 +211,72 @@ export default class Secret extends Component {
                   type="submit">Search</button>
               </form> */}
 
-        <h4>{this.state.message}</h4>
+
+
         <React.Fragment>
+
+
+
+          <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+            <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+              <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
+            </Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item active">
+                  <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
+                    <a className="nav-link username, signOut" href="#">Logged In<span className="sr-only">(current)</span></a>
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                    <button className="btn btn-warning" onClick="" type="button" id="sign-out">Sign Out</button>
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"}>
+                    <button className="btn btn-danger" onClick="" type="button" id="sign-out">Bookclubs</button>
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <Link to="/secret" className={window.location.pathname === "/secret" ? "nav-link active" : "nav-link"}>
+                    <Button handleClick={this.handleDashboardClick}>Dashboard</Button>
+                  </Link>
+                </li>
+              </ul>
+              <ul className="nav navbar-right">
+                <form id="searchbar"
+                  currentSearch={this.state.currentSearch}
+                  onSubmit={this.handleSubmit}
+                >
+
+                  <input id="booksearch"
+                    value={this.state.title}
+                    className="form-control mr-sm-2"
+
+
+                    type="text"
+                    onChange={this.handleChange}
+                    placeholder="Search by Author or Title"
+                    aria-label="Search"
+                    name="title"
+                  ></input>
+                  <button id="book-submit"
+                    className="btn btn-warning"
+                    type="submit">Search</button>
+                </form>
+
+              </ul>
+            </div>
+          </nav>
+
+
+
+
 
 
 
@@ -220,7 +284,7 @@ export default class Secret extends Component {
 
 
             <Container>
-
+              <h4>{this.state.message}</h4>
               <Row>
                 {this.state.books.map(book => (
 
@@ -366,6 +430,8 @@ export default class Secret extends Component {
 
 
         </React.Fragment>
+
+
 
 
 

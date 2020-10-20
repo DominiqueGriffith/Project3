@@ -31,7 +31,9 @@ export default class Login extends Component {
         if (res.status === 200) {
           
           // this.props.history.push('/api/home2');
+         
              window.location.reload();
+           
           
        
           // fetch('/api/secret') 
