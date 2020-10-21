@@ -22,8 +22,8 @@ export default class Signout extends Component {
     render() {
       return (
         <div>
-          <h1>Home 2</h1>
-          <p>{this.state.message}</p>
+     
+          <p>loading...</p>
         </div>
       );
     }

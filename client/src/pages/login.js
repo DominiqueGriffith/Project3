@@ -30,22 +30,23 @@ export default class Login extends Component {
       .then(res => {
         if (res.status === 200) {
           
-          // this.props.history.push('/api/home2');
-         
+          // this.props.history.push('/secret');
+          alert("You can now go to your dashboard")
+
              window.location.reload();
-           
           
        
           // fetch('/api/secret') 
         } else {
-          const error = new Error(res.error);
-          throw error;
+          // const error = new Error(res.error);
+          // throw error;
+          alert('Error logging in please try again');
         }
       })
-      .catch(err => {
-        console.error(err);
-        alert('Error logging in please try again');
-      });
+      // .catch(err => {
+      //   console.error(err);
+      //   alert('Error logging in please try again');
+      // });
     }
   render() {
     return (

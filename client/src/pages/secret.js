@@ -218,7 +218,7 @@ export default class Secret extends Component {
 
 
           <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-            <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <Link to="/secret" className={window.location.pathname === "secret" ? "nav-link active" : "nav-link"}>
               <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
             </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -228,23 +228,24 @@ export default class Secret extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"}>
+                  <Link to="/secret" className={window.location.pathname === "/secret" ? "nav-link active" : "nav-link"}>
                     <a className="nav-link username, signOut" href="#">Logged In<span className="sr-only">(current)</span></a>
                   </Link>
                 </li>
                 <li className="nav-item active">
-                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                  <Link to="/signout" className={window.location.pathname === "/signout" ? "nav-link active" : "nav-link"}>
                     <button className="btn btn-warning" onClick="" type="button" id="sign-out">Sign Out</button>
-                  </Link>
-                </li>
-                <li className="nav-item active">
-                  <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"}>
-                    <button className="btn btn-danger" onClick="" type="button" id="sign-out">Bookclubs</button>
                   </Link>
                 </li>
                 <li className="nav-item active">
                   <Link to="/secret" className={window.location.pathname === "/secret" ? "nav-link active" : "nav-link"}>
                     <Button handleClick={this.handleDashboardClick}>Dashboard</Button>
+                  </Link>
+
+                </li>
+                <li className="nav-item active">
+                  <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"}>
+                    <button className="btn btn-danger" onClick="" type="button" id="sign-out">Bookclubs</button>
                   </Link>
                 </li>
               </ul>

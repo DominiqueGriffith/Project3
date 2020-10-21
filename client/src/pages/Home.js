@@ -22,6 +22,7 @@ const styles = {
     paddingTop: "15px"
 
   },
+  
   cardBorder: {
     border: "1px lightgray solid",
     borderRadius: "5px",
@@ -43,17 +44,14 @@ const styles = {
   img: {
     height: "180px"
   },
+
 };
 
 
 
 
 
-// const styles = {
-//   pageTitle: {
-//     fontFamily: 'Pacifico', 'cursive'
-// }
-// };
+
 
 class Home extends Component {
   state = {
@@ -122,26 +120,37 @@ class Home extends Component {
     return (
       
       <React.Fragment>
+
+        
          <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+           
             <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
               <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
             </Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
+                  <Link className={window.location.pathname === "" ? "nav-link active" : "nav-link"}>
                   <a color="primary" className="nav-link" style={{ cursor: 'pointer' }} onClick={this.toggleModalTwo.bind(this)}>Login</a>
+                  </Link>
                 </li>
                 <li className="nav-item active">
-                  <Button color="primary" className="btn btn-warning" onClick={this.toggleModal.bind(this)}>Sign Up</Button>
-                </li>
-                <li>
-                  <Link to="/secret">
-                    <Button color="primary" className="btn btn-warning" onClick="">Dashboard</Button>
+                  <Link className={window.location.pathname === "" ? "nav-link active" : "nav-link"}>
+                  <button color="primary" className="btn btn-warning" onClick={this.toggleModal.bind(this)}>Sign Up</button>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/signout">
-                    <Button color="primary" className="btn btn-warning" onClick="">Signout</Button>
+                  <Link to="/secret"className={window.location.pathname === "/secret" ? "nav-link active" : "nav-link"}>
+                    <button color="primary" className="btn btn-warning" onClick="">Dashboard</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signout" className={window.location.pathname === "/signout" ? "nav-link active" : "nav-link"}>
+                    <button color="primary" className="btn btn-warning" onClick="">Signout</button>
                   </Link>
                 </li>
               </ul>
@@ -168,6 +177,7 @@ class Home extends Component {
                 </form>
               </ul>
               </div>
+              
               </nav>
 
               <Container>
@@ -352,7 +362,7 @@ class Home extends Component {
 
         </Modal> */}
 
-        <Modal isOpen={this.state.modalTwoIsOpen}>
+        {/* <Modal isOpen={this.state.modalTwoIsOpen}>
           <ModalHeader toggle={this.toggleModalTwo.bind(this)}>Please enter your Username and Password</ModalHeader>
 
           <ModalBody>
@@ -366,11 +376,11 @@ class Home extends Component {
           </ModalFooter>
 
 
-        </Modal>
+        </Modal> */}
 
 
 
-        <Modal isOpen={this.state.modalIsOpen}>
+        {/* <Modal isOpen={this.state.modalIsOpen}>
           <ModalHeader toggle={this.toggleModal.bind(this)}>Please create a Username and Password</ModalHeader>
 
           <ModalBody>
@@ -384,7 +394,7 @@ class Home extends Component {
           </ModalFooter>
 
 
-        </Modal>
+        </Modal> */}
         
       </React.Fragment>
     )

@@ -55,6 +55,7 @@ import API from "./utils/API";
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import AddBookBtn from './components/AddBookBtn'
+import Bookclub from './pages/bookclub'
 
 
 const styles = {
@@ -105,6 +106,8 @@ export default class App extends Component {
     title: "",
     saved: []
   }
+
+  
   toggleModal() {
     this.setState({
       modalIsOpen: !this.state.modalIsOpen
@@ -188,6 +191,7 @@ export default class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/signout" component={Signout} />
+            <Route path="/bookclub" component={withAuth(Bookclub)} />
             <Route path="/loggedIn" component={withAuth(loggedIn)} />
           </Switch>
         </div>
