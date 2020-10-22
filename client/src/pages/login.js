@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 import Search from './loggedIn';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from "react-router";
 
-export default class Login extends Component {
+class LoginComp extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,16 +30,11 @@ export default class Login extends Component {
       .then(res => {
         if (res.status === 200) {
           
-          // this.props.history.push('/secret');
-          alert("You can now go to your dashboard")
+          this.props.history.push("/secret")
 
-             window.location.reload();
-          
-       
-          // fetch('/api/secret') 
         } else {
-          // const error = new Error(res.error);
-          // throw error;
+          const error = new Error(res.error);
+          throw error;
           alert('Error logging in please try again');
         }
       })
@@ -85,3 +80,5 @@ export default class Login extends Component {
   }
   
 }
+const Login = withRouter(LoginComp);
+export default Login

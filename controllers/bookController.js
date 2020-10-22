@@ -20,6 +20,7 @@ module.exports = {
     console.log(req.body)
     db.Book
       .create(req.body.bookData)
+      // .populate("userID")
       .then(dbModel => res.json(dbModel))
     // .catch(err => res.status(422).json(err));
   },

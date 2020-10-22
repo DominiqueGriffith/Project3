@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
+const Book = require("./Book")
 
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
+
   email: {
     type: String,
     unique: true,
@@ -30,6 +32,7 @@ var UserSchema = new Schema({
     //   "Password should be longer."
     // ]
   },
+
 
 });
 

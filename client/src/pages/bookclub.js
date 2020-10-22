@@ -85,7 +85,7 @@ render () {
 
 
 <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-<Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+<Link to="/secret" className={window.location.pathname === "/secret" ? "nav-link active" : "nav-link"}>
           <a className="navbar-brand" id="page-title" href="#" style={styles.a}>Same Page</a>
           </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -97,21 +97,21 @@ render () {
               <li className="nav-item active">
                 <OverlayTrigger placement="bottom" overlay={<Tooltip id="tooltip-disabled">Return to logged in page!</Tooltip>}>
                   <span className="d-inline-block">
-                    <Link to="/loggedIn" className={window.location.pathname === "/loggedIn" ? "nav-link active" : "nav-link"} >
-                      <a className="nav-link username, signOut" href="#">Book Clubs<span className="sr-only">(current)</span></a>
+                    <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"} >
+                      <a className="nav-link username, signOut" href="#">Bookclub<span className="sr-only">(current)</span></a>
 
                     </Link>
                   </span>
                 </OverlayTrigger>
               </li>
               <li className="nav-item active">
-                <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                <Link to="/signout" className={window.location.pathname === "/signout" ? "nav-link active" : "nav-link"}>
                   <button className="btn btn-warning" onClick="" type="button" id="sign-out">Sign Out</button>
                 </Link>
               </li>
               <li className="nav-item active">
-                <Link to="/bookclub" className={window.location.pathname === "/bookclub" ? "nav-link active" : "nav-link"}>
-                  <button className="btn btn-danger" onClick="" type="button" id="sign-out">Bookclubs</button>
+                <Link to="/secret" className={window.location.pathname === "/secret" ? "nav-link active" : "nav-link"}>
+                  <button className="btn btn-danger" onClick="" type="button" id="sign-out">Dashboard</button>
                 </Link>
               </li>
             </ul>

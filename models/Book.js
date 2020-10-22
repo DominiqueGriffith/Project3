@@ -13,6 +13,12 @@ const bookSchema = new Schema({
     previewLinks:[{type: String}],
     bookDescriptions:[{type: String}],
     vote:  {type: Number} ,
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+      }
+    
+    // has_many: {User}
    
 
   

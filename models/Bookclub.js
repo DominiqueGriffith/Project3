@@ -19,6 +19,7 @@ var BookclubSchema = new Schema({
         //   "Password should be longer."
         // ]
       },
+      // belongs_to: {User}
 
 });
 

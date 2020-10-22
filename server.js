@@ -20,7 +20,7 @@ const app = express();
 
 // create application/json parser
 const jsonParser = bodyParser.json()
- 
+
 // initialize body-parser to parse incoming parameters requests to req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -67,29 +67,29 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/home2', function(req, res) {
+app.get('/api/home2', function (req, res) {
   res.send('Welcome to SamePage!');
- 
+
 });
 
 
 
-app.get('/api/secret', withAuth, function(req, res) {
+app.get('/api/secret', withAuth, function (req, res) {
   // res.send('The password is potato');
   res.send('Hello ' + req.username);
 
 });
 
 // a simple route that will return a 200 HTTP status if our requester has a valid token:
-app.get('/checkToken', withAuth, function(req, res) {
+app.get('/checkToken', withAuth, function (req, res) {
   res.sendStatus(200);
 })
 
 // POST route to register a user
-app.post('/api/register', function(req, res) {
+app.post('/api/register', function (req, res) {
   const { email, username, password } = req.body;
   const user = new User({ email, username, password });
-  user.save(function(err) {
+  user.save(function (err) {
     if (err) {
       res.status(500)
         .send("Error registering new user please try again.");
@@ -99,33 +99,33 @@ app.post('/api/register', function(req, res) {
   });
 });
 
-//authenticate checker
-app.post('/api/authenticate', function(req, res) {
+//authenticate checker login
+app.post('/api/authenticate', function (req, res) {
   const { email, username, password } = req.body;
-  User.findOne({ username }, function(err, user) {
+  User.findOne({ username }, function (err, user) {
     if (err) {
       console.error(err);
       res.status(500)
         .json({
-        error: 'Internal error please try again'
-      });
+          error: 'Internal error please try again'
+        });
     } else if (!user) {
       res.status(401)
         .json({
           error: 'Incorrect user or password'
         });
     } else {
-      user.isCorrectPassword(password, function(err, same) {
+      user.isCorrectPassword(password, function (err, same) {
         if (err) {
           res.status(500)
             .json({
               error: 'Internal error please try again'
-          });
+            });
         } else if (!same) {
           res.status(401)
             .json({
               error: 'Incorrect user or password'
-          });
+            });
         } else {
           // Issue token
           const payload = { username };
@@ -140,13 +140,47 @@ app.post('/api/authenticate', function(req, res) {
   });
 });
 
-//logout user
-app.get('/api/logout',withAuth,function(req,res){
+//authenticate checker signup
+app.post('/api/authenticatesignup', function (req, res) {
+  const { email, username, password } = req.body;
+  User.create({
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password
+  }, 
+  
+  function (err, user) {
+    if (err) {
+      console.error(err);
+      res.status(500)
+        .json({
+          error: 'Internal error please try again'
+        });
+    }
+    else {
+      // Issue token
+      const payload = { username };
+      const token = jwt.sign(payload, secret, {
+        expiresIn: '1h'
+      });
+      res.cookie('token', token, { httpOnly: true })
+        .sendStatus(200);
+        console.log("New USER!" + req.body.email + req.body.password)
+    }
+  })
 
-res.clearCookie('token', { httpOnly: true })
-req.session.destroy();
-res.sendStatus(200);
-}); 
+
+});
+
+
+
+//logout user
+app.get('/api/logout', withAuth, function (req, res) {
+
+  res.clearCookie('token', { httpOnly: true })
+  req.session.destroy();
+  res.sendStatus(200);
+});
 
 // adding the middleware to our express setup so express can parse cookies passed by our browser
 app.use(cookieParser());

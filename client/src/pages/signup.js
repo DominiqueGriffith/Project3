@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import API from "../utils/API.js";
 import { Container, Row, Col, Button, Alert, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
-export default class Signup extends Component {
+import { withRouter } from "react-router";
+
+class SignupComp extends Component {
   constructor(props) {
     super(props)
     this.state = {
       email: '',
       password: '',
-      username: ''
+      username: '',
+    
     };
   }
   handleInputChange = (event) => {
@@ -18,20 +21,25 @@ export default class Signup extends Component {
   }
   onSubmit = (event) => {
     event.preventDefault();
-    API.signUpUser(this.state.email, this.state.username, this.state.password)
-    // fetch('/api/register', {
-    //     method: 'POST',
-    //     body: JSON.stringify(this.state),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   })
+    // API.signUpUser(this.state.email, this.state.username, this.state.password)
+
+      fetch('/api/authenticatesignup', {
+          method: 'POST',
+          body: JSON.stringify(this.state),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
       .then(res => {
+        console.log("THIS IS res " + JSON.stringify(res.status));
         if (res.status === 200) {
-          this.props.history.push('/secret');
+
+        
+          this.props.history.push("/secret")
         } else {
           const error = new Error(res.error);
           throw error;
+
         }
       })
       .catch(err => {
@@ -75,12 +83,14 @@ export default class Signup extends Component {
           onChange={this.handleInputChange}
           required
         />
-         <br></br>
+        <br></br>
         <br></br>
         <Button type="submit" value="Submit" color="primary" className="btn btn-warning">Sign Up</Button>
 
-      
+
       </form>
     );
   }
 }
+const Signup = withRouter(SignupComp);
+export default Signup;

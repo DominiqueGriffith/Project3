@@ -4,7 +4,7 @@ const sessionChecker = require("../server.js")
 module.exports = {
   create: function (req, res) {
 
-    req.session.loggedin = true;
+    res.status  === 200;
     db.User
       .create({
         // username: req.body.username,
