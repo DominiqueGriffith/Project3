@@ -44,7 +44,7 @@ class SignupComp extends Component {
       })
       .catch(err => {
         console.error(err);
-        alert('Error logging in please try again');
+        alert('Error signing up  please try again');
       });
   }
   render() {

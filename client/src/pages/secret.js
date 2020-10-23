@@ -125,6 +125,7 @@ export default class Secret extends Component {
       previewLinks: e.target.getAttribute("data-plinks"),
       bookDescriptions: e.target.getAttribute("data-bio"),
       vote: 1,
+      userID: ""
 
 
     })

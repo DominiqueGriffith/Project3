@@ -113,7 +113,26 @@ class Home extends Component {
         // setResult(data.data.items)
       })
   }
+  handleChange = (event) => {
+    // this.setState({currentSearch:event.target.value})
+    const name = event.target.name;
+    const value = event.target.value;
+    // const setBook = React.useState("");
+    console.log(name);
+    console.log(value);
+    this.setState({
+      [name]: value
+    });
 
+  };
+  handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    this.searchBook()
+
+
+  }
 
   
   render() {
@@ -148,11 +167,7 @@ class Home extends Component {
                     <button color="primary" className="btn btn-warning" onClick="">Dashboard</button>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/signout" className={window.location.pathname === "/signout" ? "nav-link active" : "nav-link"}>
-                    <button color="primary" className="btn btn-warning" onClick="">Signout</button>
-                  </Link>
-                </li>
+
               </ul>
 
               <ul className="nav navbar-right">
